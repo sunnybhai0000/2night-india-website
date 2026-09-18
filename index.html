@@ -1,0 +1,5662 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>2Night India — Meet • Connect • Tonight</title>
+
+  <meta name="description" content="2Night India is coming. Meet, connect and discover what's happening tonight.">
+
+  <meta name="keywords" content="2Night India, 2Night app, dating app India, casual dating, meet tonight">
+
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="2Night India — Meet • Connect • Tonight">
+
+  <meta property="og:description" content="Something exciting is coming. 2Night India launches 04 November 2026.">
+
+  <meta property="og:type" content="website">
+
+
+  <style>
+    /* =========================================================
+   2NIGHT INDIA — LAUNCH WEBSITE
+   ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background: #050207;
+      color: #ffffff;
+
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+
+    /* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+    .background {
+      position: fixed;
+      inset: 0;
+
+      background-image:
+        url("assets/2night-bg.png");
+
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+
+      z-index: -5;
+
+      transform: scale(1.01);
+    }
+
+    /* BACKGROUND CHANGE ANIMATION */
+
+.background {
+  transition:
+    opacity 0.45s ease,
+    transform 0.65s ease;
+}
+
+.background.bg-changing {
+  opacity: 0;
+  transform: scale(1.06);
+}
+
+    .dark-overlay {
+      position: fixed;
+      inset: 0;
+
+      background:
+        linear-gradient(to bottom,
+          rgba(0, 0, 0, 0.50) 0%,
+          rgba(0, 0, 0, 0.12) 32%,
+          rgba(0, 0, 0, 0.34) 65%,
+          rgba(0, 0, 0, 0.92) 100%);
+
+      z-index: -4;
+    }
+
+    .pink-glow {
+      position: fixed;
+
+      width: 420px;
+      height: 420px;
+
+      left: 50%;
+      bottom: -210px;
+
+      transform: translateX(-50%);
+
+      background:
+        radial-gradient(circle,
+          rgba(255, 20, 130, 0.25) 0%,
+          rgba(255, 20, 130, 0.08) 35%,
+          transparent 72%);
+
+      filter: blur(20px);
+
+      pointer-events: none;
+
+      z-index: -3;
+    }
+
+
+    /* =========================================================
+   MAIN APP
+   ========================================================= */
+
+    .app {
+      position: relative;
+
+      width: 100%;
+      height: 100dvh;
+
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+
+    /* =========================================================
+   TOP BAR
+   ========================================================= */
+
+    .topbar {
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 72px;
+
+      padding:
+        12px 22px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      z-index: 100;
+
+      background:
+        linear-gradient(to bottom,
+          rgba(0, 0, 0, 0.58),
+          transparent);
+    }
+
+
+    /* LOGO */
+
+    .brand {
+      display: flex;
+
+      align-items: center;
+    }
+
+    .brand-logo {
+      width: 125px;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+
+      filter:
+        drop-shadow(0 0 10px rgba(255, 20, 150, 0.38));
+    }
+
+
+    /* AGE */
+
+    .age-badge {
+      min-width: 34px;
+      height: 24px;
+
+      padding: 0 8px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 999px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.20);
+
+      background:
+        rgba(0, 0, 0, 0.32);
+
+      backdrop-filter: blur(10px);
+
+      font-size: 9px;
+      font-weight: 800;
+
+      letter-spacing: 1px;
+
+      color:
+        rgba(255, 255, 255, 0.70);
+    }
+
+
+    /* =========================================================
+   SCREEN CONTAINER
+   ========================================================= */
+
+    .screen-container {
+      position: absolute;
+
+      inset: 0;
+
+      overflow: hidden;
+    }
+
+
+    /* =========================================================
+   SCREENS
+   ========================================================= */
+
+    .screen {
+      position: absolute;
+
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      padding:
+        82px 22px 92px;
+
+      display: none;
+
+      overflow: hidden;
+
+      animation:
+        screenIn 0.28s ease;
+    }
+
+    .screen.active {
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes screenIn {
+
+      from {
+        opacity: 0;
+        transform: scale(0.985);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+    }
+
+
+    /* =========================================================
+   HOME
+   ========================================================= */
+
+    #homeScreen {
+      padding:
+        70px 20px 80px;
+    }
+
+
+    /* MAIN LOGO */
+
+    .launch-logo img {
+      width: 185px;
+
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+
+      filter:
+        drop-shadow(0 0 16px rgba(255, 20, 150, 0.45));
+    }
+
+
+    /* =========================================================
+   APP ICON
+   ========================================================= */
+
+    .app-icon-wrap {
+      margin-top: 8px;
+
+      padding: 5px;
+
+      border-radius: 25px;
+
+      background:
+        linear-gradient(135deg,
+          rgba(255, 35, 145, 0.92),
+          rgba(150, 35, 255, 0.92));
+
+      box-shadow:
+        0 12px 42px rgba(255, 20, 130, 0.35);
+    }
+
+    .app-icon {
+      width: 82px;
+      height: 82px;
+
+      border-radius: 20px;
+
+      overflow: hidden;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      background: #08050a;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .app-icon img {
+      width: 92%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+
+    /* =========================================================
+   DOWNLOAD BUTTON
+   ========================================================= */
+
+    .download-button {
+      margin-top: 13px;
+
+      min-width: 180px;
+      height: 43px;
+
+      padding:
+        0 20px;
+
+      border: 0;
+
+      border-radius: 999px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 8px;
+
+      color: #ffffff;
+
+      background:
+        linear-gradient(100deg,
+          #ff167f,
+          #a32cff);
+
+      box-shadow:
+        0 8px 30px rgba(255, 20, 130, 0.30);
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      letter-spacing: 1.5px;
+    }
+
+    .download-icon {
+      font-size: 17px;
+      line-height: 1;
+    }
+
+    .download-button.disabled {
+      cursor: not-allowed;
+
+      opacity: 0.72;
+    }
+
+
+    /* =========================================================
+   DOWNLOAD COUNTDOWN
+   ========================================================= */
+
+    .download-countdown {
+      margin-top: 11px;
+
+      min-width: 230px;
+
+      padding:
+        9px 20px;
+
+      border-radius: 15px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.13);
+
+      background:
+        rgba(0, 0, 0, 0.36);
+
+      backdrop-filter: blur(14px);
+
+      box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.30);
+    }
+
+    .download-label {
+      display: block;
+
+      font-size: 7px;
+
+      font-weight: 800;
+
+      letter-spacing: 2.5px;
+
+      color:
+        rgba(255, 255, 255, 0.44);
+    }
+
+    .download-time {
+      margin-top: 3px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 5px;
+
+      font-size: 21px;
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
+
+      line-height: 1;
+    }
+
+    .download-time b {
+      opacity: 0.30;
+
+      font-size: 16px;
+    }
+
+
+    /* =========================================================
+   AVAILABLE DATE
+   ========================================================= */
+
+    .available-date {
+      margin-top: 8px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      gap: 3px;
+
+      font-size: 7px;
+
+      font-weight: 700;
+
+      letter-spacing: 2px;
+
+      color:
+        rgba(255, 255, 255, 0.42);
+    }
+
+    .available-date strong {
+      font-size: 10px;
+
+      letter-spacing: 1.5px;
+
+      color:
+        rgba(255, 255, 255, 0.76);
+    }
+
+
+    /* =========================================================
+   STORE SECTION
+   ========================================================= */
+
+    .store-section {
+      width: min(390px, 100%);
+
+      margin-top: 15px;
+
+      padding-top: 11px;
+
+      border-top:
+        1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    .available-date {
+      margin-bottom: 14px;
+    }
+
+    .store-section {
+      margin-top: 0;
+    }
+
+    .store-title {
+      font-size: 7px;
+
+      font-weight: 800;
+
+      letter-spacing: 2.5px;
+
+      color:
+        rgba(255, 255, 255, 0.36);
+    }
+
+
+    /* STORE BUTTONS */
+
+    .store-buttons {
+      width: 100%;
+
+      margin-top: 8px;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 8px;
+    }
+
+    .store-button {
+      height: 49px;
+
+      padding:
+        6px 10px;
+
+      border-radius: 13px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.13);
+
+      background:
+        rgba(0, 0, 0, 0.42);
+
+      color: #ffffff;
+
+      display: flex;
+
+      align-items: center;
+
+      text-align: left;
+
+      gap: 8px;
+
+      backdrop-filter: blur(12px);
+    }
+
+    .store-button.disabled {
+      cursor: not-allowed;
+
+      opacity: 0.58;
+    }
+
+    .store-icon {
+      width: 27px;
+
+      flex-shrink: 0;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      font-size: 22px;
+
+      line-height: 1;
+    }
+
+    .play-icon {
+      font-size: 15px;
+    }
+
+    .store-text {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 2px;
+
+      min-width: 0;
+    }
+
+    .store-text small {
+      font-size: 6px;
+
+      color:
+        rgba(255, 255, 255, 0.42);
+    }
+
+    .store-text strong {
+      font-size: 10px;
+
+      font-weight: 800;
+
+      white-space: nowrap;
+    }
+
+
+    /* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+    .back-button {
+      position: absolute;
+
+      top: 82px;
+      left: 22px;
+
+      width: 38px;
+      height: 38px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.15);
+
+      background:
+        rgba(0, 0, 0, 0.34);
+
+      color: #ffffff;
+
+      font-size: 20px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+
+      backdrop-filter: blur(10px);
+
+      z-index: 20;
+    }
+
+
+    /* =========================================================
+   GENERIC SCREEN CONTENT
+   ========================================================= */
+
+    .screen-content {
+      width: min(520px, 100%);
+
+      text-align: center;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      height: 100%;
+    }
+
+    .section-tag {
+      margin-bottom: 9px;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      letter-spacing: 3px;
+
+      color:
+        rgba(255, 255, 255, 0.48);
+    }
+
+    .screen-content h2 {
+      font-size: clamp(30px, 6vw, 48px);
+
+      line-height: 0.98;
+
+      font-weight: 900;
+
+      letter-spacing: -1.5px;
+    }
+
+    .screen-content h2 span {
+      background:
+        linear-gradient(100deg,
+          #ff3b91,
+          #c54cff);
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+    }
+
+    .description {
+      max-width: 430px;
+
+      margin-top: 14px;
+
+      font-size: 12px;
+
+      line-height: 1.55;
+
+      color:
+        rgba(255, 255, 255, 0.62);
+    }
+
+
+    /* =========================================================
+   ABOUT CARDS
+   ========================================================= */
+
+    .mini-features {
+      width: min(430px, 100%);
+
+      margin-top: 20px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 8px;
+    }
+
+    .mini-card {
+      padding: 10px 13px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.10);
+
+      border-radius: 14px;
+
+      background:
+        rgba(0, 0, 0, 0.35);
+
+      backdrop-filter: blur(12px);
+
+      display: flex;
+
+      align-items: center;
+
+      text-align: left;
+
+      gap: 11px;
+    }
+
+    .mini-icon {
+      width: 35px;
+      height: 35px;
+
+      flex-shrink: 0;
+
+      border-radius: 11px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      background:
+        rgba(255, 30, 135, 0.13);
+
+      color:
+        #ff4b9b;
+
+      font-size: 16px;
+    }
+
+    .mini-card strong {
+      display: block;
+
+      font-size: 11px;
+    }
+
+    .mini-card p {
+      margin-top: 2px;
+
+      font-size: 8px;
+
+      color:
+        rgba(255, 255, 255, 0.45);
+    }
+
+
+    /* =========================================================
+   PREVIEW PHONE
+   ========================================================= */
+
+    .preview-content {
+      justify-content: center;
+    }
+
+    .phone {
+      position: relative;
+
+      width: 155px;
+      height: 285px;
+
+      margin-top: 14px;
+
+      padding: 6px;
+
+      border-radius: 25px;
+
+      background:
+        #070609;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.20);
+
+      box-shadow:
+        0 20px 55px rgba(0, 0, 0, 0.65);
+
+      transform:
+        rotate(-2deg);
+    }
+
+    .phone-top {
+      position: absolute;
+
+      top: 9px;
+      left: 50%;
+
+      width: 52px;
+      height: 8px;
+
+      transform: translateX(-50%);
+
+      border-radius: 999px;
+
+      background: #020103;
+
+      z-index: 5;
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+
+      overflow: hidden;
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(150deg,
+          #170714,
+          #09030b);
+
+      position: relative;
+    }
+
+
+    /* FAKE LOGO */
+
+    .fake-app-logo {
+      position: absolute;
+
+      top: 16px;
+      left: 12px;
+
+      z-index: 3;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
+
+      color:
+        #ff4b9b;
+    }
+
+
+    /* FAKE PROFILE PHOTO */
+
+    .fake-photo {
+      position: absolute;
+
+      top: 42px;
+      left: 8px;
+      right: 8px;
+      bottom: 46px;
+
+      overflow: hidden;
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(145deg,
+          #ff2b7e,
+          #321033 52%,
+          #07030a);
+    }
+
+    .fake-photo::before {
+      content: "";
+
+      position: absolute;
+
+      width: 100px;
+      height: 150px;
+
+      left: 35px;
+      top: 32px;
+
+      border-radius:
+        48% 48% 42% 42%;
+
+      background:
+        rgba(0, 0, 0, 0.72);
+
+      transform:
+        rotate(-7deg);
+    }
+
+    .photo-gradient {
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(to top,
+          rgba(0, 0, 0, 0.82),
+          transparent 55%);
+    }
+
+    .fake-profile-info {
+      position: absolute;
+
+      left: 11px;
+      right: 11px;
+      bottom: 11px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      text-align: left;
+    }
+
+    .fake-profile-info strong {
+      font-size: 9px;
+    }
+
+    .fake-profile-info small {
+      margin-top: 2px;
+
+      font-size: 6px;
+
+      color:
+        rgba(255, 255, 255, 0.55);
+    }
+
+
+    /* FAKE ACTIONS */
+
+    .fake-actions {
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: 7px;
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 35px;
+
+      font-size: 20px;
+    }
+
+    .fake-actions div:first-child {
+      color:
+        rgba(255, 255, 255, 0.75);
+    }
+
+    .fake-actions div:last-child {
+      color:
+        #ff398d;
+    }
+
+
+    /* =========================================================
+   PEOPLE / POLL
+   ========================================================= */
+
+    .people-content {
+      justify-content: flex-start;
+      position: relative;
+    }
+
+    .poll-card {
+      width: min(420px, 100%);
+
+      margin-top: 17px;
+
+      padding: 17px;
+
+      border-radius: 18px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+      background:
+        rgba(0, 0, 0, 0.40);
+
+      backdrop-filter: blur(15px);
+
+      text-align: left;
+    }
+
+    .poll-card h3 {
+      font-size: 13px;
+
+      text-align: center;
+    }
+
+    .poll-subtitle {
+      margin-top: 3px;
+
+      text-align: center;
+
+      font-size: 7px;
+
+      color:
+        rgba(255, 255, 255, 0.38);
+    }
+
+
+    /* POLL OPTIONS */
+
+    .poll-options {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 8px;
+
+      margin-top: 13px;
+    }
+
+    .poll-button {
+      height: 42px;
+
+      border-radius: 12px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+      background:
+        rgba(255, 255, 255, 0.055);
+
+      color: #ffffff;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .poll-button:hover {
+      transform: translateY(-2px);
+
+      background:
+        rgba(255, 35, 140, 0.15);
+    }
+
+    .poll-button span {
+      margin-right: 5px;
+
+      color:
+        #ff4597;
+
+      font-size: 14px;
+    }
+
+
+    /* POLL RESULTS */
+
+    .poll-results {
+      margin-top: 15px;
+    }
+
+    .result+.result {
+      margin-top: 10px;
+    }
+
+    .result-top {
+      display: flex;
+
+      justify-content: space-between;
+
+      font-size: 8px;
+
+      color:
+        rgba(255, 255, 255, 0.65);
+    }
+
+    .result-top strong {
+      color: #ffffff;
+    }
+
+    .result-bar {
+      width: 100%;
+      height: 5px;
+
+      margin-top: 5px;
+
+      border-radius: 999px;
+
+      overflow: hidden;
+
+      background:
+        rgba(255, 255, 255, 0.08);
+    }
+
+    .result-fill {
+      height: 100%;
+
+      width: 50%;
+
+      border-radius: inherit;
+
+      background:
+        linear-gradient(90deg,
+          #ff187e,
+          #b72cff);
+
+      transition:
+        width 0.4s ease;
+    }
+
+
+    /* =========================================================
+   COMMENTS
+   ========================================================= */
+
+    .comment-title {
+      margin-top: 14px;
+
+      font-size: 7px;
+
+      font-weight: 800;
+
+      letter-spacing: 2px;
+
+      color:
+        rgba(255, 255, 255, 0.35);
+    }
+
+    .comment-box {
+      width: min(420px, 100%);
+
+      margin-top: 7px;
+
+      display: flex;
+
+      gap: 7px;
+    }
+
+    .comment {
+      flex: 1;
+
+      padding: 9px;
+
+      border-radius: 11px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+      background:
+        rgba(0, 0, 0, 0.30);
+
+      font-size: 7px;
+
+      line-height: 1.4;
+
+      color:
+        rgba(255, 255, 255, 0.58);
+    }
+
+    .comment span {
+      color:
+        #ff3d91;
+
+      font-size: 13px;
+    }
+
+    .sample-note {
+      margin-top: 5px;
+
+      font-size: 6px;
+
+      color:
+        rgba(255, 255, 255, 0.25);
+    }
+
+
+    /* =========================================================
+   NOTIFY FORM
+   ========================================================= */
+
+    .notify-form {
+      width: min(400px, 100%);
+
+      margin-top: 18px;
+
+      display: flex;
+
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .notify-form input,
+    .notify-form select {
+      width: 100%;
+
+      height: 43px;
+
+      padding:
+        0 13px;
+
+      border-radius: 12px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+      outline: none;
+
+      background:
+        rgba(0, 0, 0, 0.40);
+
+      color: #ffffff;
+
+      backdrop-filter: blur(12px);
+
+      font-family: inherit;
+
+      font-size: 20px;
+    }
+
+    .notify-form input::placeholder {
+
+      font-size: 20px;
+      color:
+        rgba(255, 255, 255, 0.36);
+    }
+
+    .notify-form select {
+      font-size: 20px;
+      color:
+        rgba(255, 255, 255, 0.65);
+    }
+
+    .notify-form select option {
+      background: #130914;
+      color: #ffffff;
+    }
+
+
+    /* CONSENT */
+
+    .consent {
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 7px;
+
+      margin-top: 2px;
+
+      text-align: left;
+
+      font-size: 15px;
+
+      line-height: 1.4;
+
+      color:
+        rgba(255, 255, 255, 0.40);
+    }
+
+    .consent input {
+      width: 13px !important;
+      height: 13px !important;
+
+      flex-shrink: 0;
+
+      margin-top: 1px;
+    }
+
+
+    /* =========================================================
+   MAIN BUTTON
+   ========================================================= */
+
+    .main-button {
+      height: 43px;
+
+      border: none;
+
+      border-radius: 999px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      text-decoration: none;
+
+      color: #ffffff;
+
+      background:
+        linear-gradient(100deg,
+          #ff167f,
+          #a52cff);
+
+      box-shadow:
+        0 8px 25px rgba(255, 20, 130, 0.25);
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      letter-spacing: 1.5px;
+
+      cursor: pointer;
+    }
+
+    .form-button {
+      width: 100%;
+
+      margin-top: 3px;
+    }
+
+
+    /* FORM MESSAGE */
+
+    .form-message {
+      margin-top: 9px;
+
+      font-size: 8px;
+
+      color:
+        rgba(255, 255, 255, 0.65);
+    }
+
+
+    /* =========================================================
+   PROMOTE
+   ========================================================= */
+
+    .creator-box {
+      width: min(400px, 100%);
+
+      margin-top: 18px;
+
+      padding: 20px;
+
+      border-radius: 18px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+      background:
+        rgba(0, 0, 0, 0.38);
+
+      backdrop-filter: blur(14px);
+    }
+
+    .creator-icon {
+      width: 42px;
+      height: 42px;
+
+      margin: 0 auto 10px;
+
+      border-radius: 13px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      background:
+        rgba(255, 30, 135, 0.12);
+
+      color:
+        #ff4597;
+
+      font-size: 18px;
+    }
+
+    .creator-box h3 {
+      font-size: 14px;
+    }
+
+    .creator-box p {
+      margin-top: 6px;
+
+      font-size: 9px;
+
+      line-height: 1.5;
+
+      color:
+        rgba(255, 255, 255, 0.45);
+    }
+
+    .creator-button {
+      margin-top: 14px;
+    }
+
+
+    /* =========================================================
+   BOTTOM NAVIGATION
+   ========================================================= */
+
+    .bottom-nav {
+      position: absolute;
+
+      left: 50%;
+
+      bottom: 11px;
+
+      transform: translateX(-50%);
+
+      width:
+        min(calc(100% - 22px),
+          470px);
+
+      height: 59px;
+
+      padding:
+        5px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(5, 1fr);
+
+      gap: 2px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+      border-radius: 20px;
+
+      background:
+        rgba(5, 2, 7, 0.72);
+
+      backdrop-filter: blur(20px);
+
+      box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.45);
+
+      z-index: 100;
+    }
+
+    .nav-item {
+      border: none;
+
+      border-radius: 15px;
+
+      background: transparent;
+
+      color:
+        rgba(255, 255, 255, 0.38);
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 2px;
+
+      cursor: pointer;
+
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .nav-item span {
+      font-size: 16px;
+
+      line-height: 1;
+    }
+
+    .nav-item small {
+      font-size: 6px;
+
+      font-weight: 800;
+
+      letter-spacing: 0.5px;
+    }
+
+    .nav-item.active {
+      color: #ffffff;
+
+      background:
+        linear-gradient(135deg,
+          rgba(255, 30, 135, 0.20),
+          rgba(150, 40, 255, 0.18));
+    }
+
+    .nav-item.active span {
+      color:
+        #ff4597;
+    }
+
+
+    /* =========================================================
+   FOOTER
+   ========================================================= */
+
+    .mini-footer {
+      position: absolute;
+
+      bottom: 1px;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      font-size: 5px;
+
+      letter-spacing: 1.5px;
+
+      color:
+        rgba(255, 255, 255, 0.20);
+
+      z-index: 105;
+
+      pointer-events: none;
+    }
+
+
+    /* =========================================================
+   MOBILE
+   ========================================================= */
+
+    @media (max-width: 600px) {
+
+      .topbar {
+        height: 62px;
+
+        padding:
+          9px 16px;
+      }
+
+      .brand-logo {
+        width: 105px;
+      }
+
+      .age-badge {
+        min-width: 31px;
+        height: 22px;
+
+        font-size: 8px;
+      }
+
+
+      /* HOME */
+
+      #homeScreen {
+        padding:
+          58px 15px 76px;
+      }
+
+      .launch-logo img {
+        width: 150px;
+      }
+
+      .app-icon-wrap {
+        margin-top: 5px;
+
+        padding: 4px;
+
+        border-radius: 21px;
+      }
+
+      .app-icon {
+        width: 72px;
+        height: 72px;
+
+        border-radius: 17px;
+      }
+
+      .download-button {
+        min-width: 165px;
+
+        height: 40px;
+
+        margin-top: 10px;
+
+        font-size: 9px;
+      }
+
+      .download-countdown {
+        min-width: 205px;
+
+        margin-top: 9px;
+
+        padding:
+          8px 15px;
+      }
+
+      .download-time {
+        font-size: 18px;
+
+        gap: 4px;
+      }
+
+      .download-time b {
+        font-size: 14px;
+      }
+
+      .available-date {
+        margin-top: 7px;
+
+        font-size: 6px;
+      }
+
+      .available-date strong {
+        font-size: 8px;
+      }
+
+
+      /* STORES */
+
+      .store-section {
+        width: min(340px, 100%);
+
+        margin-top: 12px;
+
+        padding-top: 9px;
+      }
+
+      .store-buttons {
+        gap: 6px;
+
+        margin-top: 7px;
+      }
+
+      .store-button {
+        height: 44px;
+
+        padding:
+          5px 7px;
+
+        gap: 6px;
+
+        border-radius: 11px;
+      }
+
+      .store-icon {
+        width: 22px;
+
+        font-size: 18px;
+      }
+
+      .play-icon {
+        font-size: 13px;
+      }
+
+      .store-text small {
+        font-size: 5px;
+      }
+
+      .store-text strong {
+        font-size: 8px;
+      }
+
+
+      /* SCREENS */
+
+      .screen {
+        padding:
+          72px 16px 78px;
+        /* border: 1px solid red; */
+      }
+
+      .back-button {
+        top: 68px;
+        left: 16px;
+
+        /* border: 1px solid yellow; */
+        width: 34px;
+        height: 34px;
+
+        font-size: 18px;
+      }
+
+      .section-tag {
+        font-size: 7px;
+
+        letter-spacing: 2.5px;
+      }
+
+      .screen-content h2 {
+        font-size: 31px;
+      }
+
+      .description {
+        margin-top: 11px;
+
+        font-size: 10px;
+
+        max-width: 330px;
+      }
+
+
+      /* ABOUT */
+
+      .mini-features {
+        width: min(340px, 100%);
+
+        margin-top: 14px;
+
+        gap: 6px;
+      }
+
+      .mini-card {
+        padding: 8px 10px;
+
+        border-radius: 12px;
+
+        gap: 8px;
+      }
+
+      .mini-icon {
+        width: 31px;
+        height: 31px;
+
+        border-radius: 9px;
+
+        font-size: 14px;
+      }
+
+      .mini-card strong {
+        font-size: 9px;
+      }
+
+      .mini-card p {
+        font-size: 7px;
+      }
+
+
+      /* PREVIEW */
+
+      .phone {
+        width: 135px;
+        height: 245px;
+
+        margin-top: 10px;
+
+        border-radius: 22px;
+      }
+
+      .phone-screen {
+        border-radius: 17px;
+      }
+
+      .fake-photo {
+        top: 37px;
+
+        bottom: 40px;
+      }
+
+
+      /* PEOPLE */
+
+      .poll-card {
+        width: min(350px, 100%);
+
+        margin-top: 13px;
+
+        padding: 13px;
+
+        border-radius: 15px;
+      }
+
+      .poll-card h3 {
+        font-size: 11px;
+      }
+
+      .poll-button {
+        height: 38px;
+
+        font-size: 9px;
+      }
+
+      .comment-title {
+        margin-top: 10px;
+      }
+
+      .comment {
+        padding: 7px;
+
+        font-size: 6px;
+      }
+
+
+      /* NOTIFY */
+
+      .notify-form {
+        width: min(340px, 100%);
+
+        margin-top: 13px;
+
+        gap: 7px;
+      }
+
+      .notify-form input,
+      .notify-form select {
+        height: 40px;
+
+        font-size: 9px;
+      }
+
+      .consent {
+        font-size: 6px;
+      }
+
+
+      /* CREATOR */
+
+      .creator-box {
+        width: min(340px, 100%);
+
+        margin-top: 13px;
+
+        padding: 16px;
+      }
+
+
+      /* NAV */
+
+      .bottom-nav {
+        width:
+          calc(100% - 18px);
+
+        bottom: 8px;
+
+        height: 55px;
+
+        border-radius: 18px;
+      }
+
+      .nav-item span {
+        font-size: 15px;
+      }
+
+      .nav-item small {
+        font-size: 5px;
+      }
+
+      .mini-footer {
+        display: none;
+      }
+
+    }
+
+
+    /* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+    @media (max-height: 700px) and (max-width: 600px) {
+
+      .launch-logo img {
+        width: 130px;
+      }
+
+      .app-icon {
+        width: 64px;
+        height: 64px;
+      }
+
+      .download-button {
+        height: 37px;
+
+        margin-top: 8px;
+      }
+
+      .download-countdown {
+        margin-top: 7px;
+
+        padding: 7px 13px;
+      }
+
+      .download-time {
+        font-size: 16px;
+      }
+
+      .available-date {
+        margin-top: 5px;
+      }
+
+      .store-section {
+        margin-top: 9px;
+      }
+
+      .store-button {
+        height: 40px;
+      }
+
+    }
+
+
+    /* =========================================================
+   LANDSCAPE MOBILE
+   ========================================================= */
+
+    @media (orientation: landscape) and (max-height: 600px) {
+
+      .topbar {
+        height: 52px;
+      }
+
+      .brand-logo {
+        width: 85px;
+      }
+
+      #homeScreen {
+        padding:
+          50px 20px 65px;
+      }
+
+      .launch-home {
+        justify-content: center;
+      }
+
+      .launch-logo img {
+        width: 105px;
+      }
+
+      .app-icon {
+        width: 52px;
+        height: 52px;
+      }
+
+      .app-icon-wrap {
+        margin-top: 3px;
+
+        padding: 3px;
+      }
+
+      .download-button {
+        height: 34px;
+
+        margin-top: 5px;
+      }
+
+      .download-countdown {
+        margin-top: 5px;
+
+        padding: 5px 13px;
+      }
+
+      .download-time {
+        font-size: 15px;
+      }
+
+      .available-date {
+        margin-top: 4px;
+      }
+
+      .store-section {
+        margin-top: 6px;
+
+        padding-top: 6px;
+      }
+
+      .store-buttons {
+        margin-top: 4px;
+      }
+
+      .store-button {
+        height: 35px;
+      }
+
+      .bottom-nav {
+        height: 46px;
+
+        bottom: 5px;
+      }
+
+    }
+
+    /* =========================================================
+   HOW TO ACCESS AFTER LAUNCH
+   ========================================================= */
+
+    .access-button {
+      width: min(360px, 100%);
+
+      height: 46px;
+
+      margin-top: 14px;
+
+      padding: 0 18px;
+
+      border-radius: 14px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.16);
+
+      background:
+        rgba(0, 0, 0, 0.38);
+
+      backdrop-filter: blur(12px);
+
+      color: #ffffff;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .access-button:hover {
+      transform: translateY(-2px);
+
+      background:
+        rgba(255, 25, 135, 0.12);
+    }
+
+    .access-button span:first-child {
+      font-size: 8px;
+
+      font-weight: 900;
+
+      letter-spacing: 1.6px;
+    }
+
+    .access-button span:last-child {
+      font-size: 7px;
+
+      font-weight: 800;
+
+      letter-spacing: 0.8px;
+
+      color:
+        rgba(255, 255, 255, 0.48);
+    }
+
+
+    /* =========================================================
+   ACCESS MODAL
+   ========================================================= */
+
+    .access-modal {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 500;
+
+      display: none;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 18px;
+
+      background:
+        rgba(0, 0, 0, 0.72);
+
+      backdrop-filter: blur(10px);
+    }
+
+    .access-modal.show {
+      display: flex;
+
+      animation:
+        accessFade 0.2s ease;
+    }
+
+    @keyframes accessFade {
+
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+
+    }
+
+
+    /* =========================================================
+   MODAL BOX
+   ========================================================= */
+
+    .access-modal-box {
+      position: relative;
+
+      width: min(420px, 100%);
+
+      padding:
+        24px 18px 18px;
+
+      border-radius: 22px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.13);
+
+      background:
+        linear-gradient(145deg,
+          rgba(29, 7, 25, 0.97),
+          rgba(7, 3, 10, 0.98));
+
+      box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.65);
+
+      text-align: center;
+
+      animation:
+        accessUp 0.23s ease;
+    }
+
+    @keyframes accessUp {
+
+      from {
+        transform:
+          translateY(15px) scale(0.97);
+      }
+
+      to {
+        transform:
+          translateY(0) scale(1);
+      }
+
+    }
+
+
+    /* CLOSE BUTTON */
+
+    .modal-close {
+      position: absolute;
+
+      top: 10px;
+
+      right: 11px;
+
+      width: 30px;
+
+      height: 30px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.10);
+
+      background:
+        rgba(255, 255, 255, 0.05);
+
+      color: #ffffff;
+
+      font-size: 19px;
+
+      line-height: 1;
+
+      cursor: pointer;
+    }
+
+
+    /* TAG */
+
+    .modal-tag {
+      margin-bottom: 8px;
+
+      font-size: 7px;
+
+      font-weight: 900;
+
+      letter-spacing: 2.4px;
+
+      color:
+        rgba(255, 255, 255, 0.36);
+    }
+
+
+    /* HEADING */
+
+    .access-modal-box h2 {
+      font-size: 24px;
+
+      line-height: 1.08;
+
+      font-weight: 900;
+
+      letter-spacing: -0.7px;
+    }
+
+    .access-modal-box h2 span {
+      background:
+        linear-gradient(100deg,
+          #ff3b91,
+          #c54cff);
+
+      -webkit-background-clip: text;
+
+      background-clip: text;
+
+      color: transparent;
+    }
+
+
+    /* DESCRIPTION */
+
+    .modal-description {
+      max-width: 320px;
+
+      margin:
+        10px auto 15px;
+
+      font-size: 8px;
+
+      line-height: 1.5;
+
+      color:
+        rgba(255, 255, 255, 0.45);
+    }
+
+
+    /* =========================================================
+   STEPS
+   ========================================================= */
+
+    .access-steps {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 7px;
+
+      text-align: left;
+    }
+
+    .access-step {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      padding:
+        9px 10px;
+
+      border-radius: 12px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.07);
+
+      background:
+        rgba(255, 255, 255, 0.035);
+    }
+
+    .step-number {
+      width: 30px;
+
+      height: 30px;
+
+      flex-shrink: 0;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 9px;
+
+      background:
+        rgba(255, 35, 140, 0.12);
+
+      color:
+        #ff4a98;
+
+      font-size: 20px;
+
+      font-weight: 900;
+    }
+
+    .access-step strong {
+      display: block;
+
+      font-size: 9px;
+
+      font-weight: 850;
+    }
+
+    .access-step p {
+      margin-top: 2px;
+
+      font-size: 7px;
+
+      line-height: 1.35;
+
+      color:
+        rgba(255, 255, 255, 0.38);
+    }
+
+
+    /* =========================================================
+   GOT IT
+   ========================================================= */
+
+    .modal-done {
+      width: 100%;
+
+      height: 39px;
+
+      margin-top: 13px;
+
+      border: none;
+
+      border-radius: 999px;
+
+      background:
+        linear-gradient(100deg,
+          #ff167f,
+          #a52cff);
+
+      color: #ffffff;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      letter-spacing: 1.5px;
+
+      cursor: pointer;
+    }
+
+
+    /* =========================================================
+   MOBILE
+   ========================================================= */
+
+    @media (max-width: 600px) {
+
+      .access-button {
+        width: min(330px, 100%);
+
+        height: 43px;
+
+        margin-top: 10px;
+
+        padding: 0 15px;
+      }
+
+      .access-button span:first-child {
+        font-size: 7px;
+      }
+
+      .access-button span:last-child {
+        font-size: 6px;
+      }
+
+      .access-modal {
+        padding: 13px;
+      }
+
+      .access-modal-box {
+        padding:
+          21px 14px 14px;
+
+        border-radius: 20px;
+      }
+
+      .access-modal-box h2 {
+        font-size: 22px;
+      }
+
+      .modal-description {
+        font-size: 7px;
+      }
+
+      .access-step {
+        padding:
+          8px 9px;
+      }
+
+      .access-step strong {
+        font-size: 8px;
+      }
+
+      .access-step p {
+        font-size: 6.5px;
+      }
+
+    }
+
+    /* Remove browser blue focus / tap highlight from bottom tabs */
+    .bottom-nav button,
+    .nav-item {
+      -webkit-tap-highlight-color: transparent;
+      -webkit-focus-ring-color: transparent;
+      outline: none;
+      box-shadow: none;
+    }
+
+    .bottom-nav button:focus,
+    .bottom-nav button:focus-visible,
+    .nav-item:focus,
+    .nav-item:focus-visible {
+      outline: none;
+      box-shadow: none;
+    }
+
+    /* Remove blue highlight after tapping on mobile */
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* =====================================================================================================
+   MOVE APP ICON + DOWNLOAD TO TOP
+   ========================================================= */
+
+    .app-download-row {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 90%;
+      max-width: 700px;
+
+      margin: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* gap: 22px; */
+
+      z-index: 10;
+    }
+
+    /* APP ICON — NO BORDER */
+
+    .app-icon {
+      width: 105px;
+      height: 105px;
+
+      flex-shrink: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      outline: none;
+    }
+
+    .app-icon img {
+      width: 100%;
+      height: 100%;
+
+      display: block;
+
+      object-fit: contain;
+
+      border: none;
+      outline: none;
+      box-shadow: none;
+    }
+
+
+    /* DOWNLOAD BUTTON */
+
+
+    .download-btn {
+      flex: 0 0 auto;
+
+      width: 230px;
+      min-height: 78px;
+
+      margin-left: auto;
+
+      border-radius: 18px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .download-btn {
+        width: 175px;
+        min-height: 68px;
+      }
+    }
+
+    .download-title {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .download-countdown {
+      margin-top: 7px;
+
+      font-size: 22px;
+      font-weight: 800;
+
+      letter-spacing: 1px;
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      .app-download-row {
+        width: 92%;
+        gap: 12px;
+      }
+
+      .app-icon {
+        width: 82px;
+        height: 82px;
+      }
+
+      .download-btn {
+        min-height: 82px;
+        border-radius: 18px;
+      }
+
+      .download-title {
+        font-size: 18px;
+      }
+
+      .download-countdown {
+        font-size: 15px;
+      }
+
+    }
+
+    /* =========================================================
+   HOME LAYOUT — TOP + BOTTOM STRUCTURE
+   ========================================================= */
+
+    .launch-home {
+      position: relative;
+      width: min(560px, 100%);
+      height: 100%;
+
+      display: block;
+
+      overflow: hidden;
+    }
+
+
+    /* =========================================================
+   APP ICON + DOWNLOAD — TOP
+   ========================================================= */
+
+    .app-download-row {
+      position: absolute;
+
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 90%;
+      max-width: 700px;
+
+      margin: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 12px;
+
+      z-index: 10;
+    }
+
+
+    /* =========================================================
+   HOW TO ACCESS + CONTENT BELOW — BOTTOM
+   ========================================================= */
+
+    .access-button {
+      position: absolute;
+
+      left: 50%;
+      bottom: 155px;
+
+      transform: translateX(-50%);
+
+      margin: 0;
+
+      z-index: 10;
+    }
+
+    .available-date {
+      position: absolute;
+
+      left: 50%;
+      bottom: 105px;
+
+      transform: translateX(-50%);
+
+      margin: 0;
+
+      z-index: 10;
+    }
+
+    .store-section {
+      position: absolute;
+
+      left: 50%;
+      bottom: 0px;
+
+      transform: translateX(-50%);
+
+      margin: 0;
+
+      z-index: 10;
+    }
+
+    /* =========================================================
+   STORE BUTTON — NOT AVAILABLE BADGE
+   ========================================================= */
+
+    .store-button {
+      position: relative;
+    }
+
+
+    /* Individual badge on each store */
+
+    .store-badge {
+      position: absolute;
+
+      top: -8px;
+      right: 8px;
+
+      padding: 4px 7px;
+
+      border-radius: 999px;
+
+      background: rgba(25, 25, 30, 0.95);
+
+      border: 1px solid rgba(255, 255, 255, 0.18);
+
+      color: rgba(255, 255, 255, 0.70);
+
+      font-size: 5px;
+      font-weight: 900;
+
+      letter-spacing: 0.8px;
+
+      white-space: nowrap;
+
+      z-index: 5;
+    }
+
+
+
+    /* =========================================================
+   PREVIEW — APP SHOWCASE
+   ========================================================= */
+
+    #previewScreen {
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 105px;
+    }
+
+    #previewScreen::-webkit-scrollbar {
+      display: none;
+    }
+
+    .preview-content {
+      width: min(620px, 100%);
+      height: auto;
+      min-height: 100%;
+      justify-content: flex-start;
+      padding-top: 18px;
+      padding-bottom: 30px;
+    }
+
+    .preview-intro {
+      max-width: 430px;
+      margin-bottom: 15px;
+    }
+
+    .preview-intro .description {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Main long-chat phone */
+    .chat-phone {
+      position: relative;
+      width: 220px;
+      height: 420px;
+      flex: 0 0 auto;
+      padding: 7px;
+      /* margin-top: 20px; */
+      margin: 4px auto 0;
+      border-radius: 34px;
+      background: linear-gradient(145deg, #29242e, #070609 52%, #17131c);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.78),
+        0 0 45px rgba(255, 40, 150, 0.18),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+      transform: translateY(0) rotate(-1deg);
+      animation: chatPhoneFloat 5s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    .chat-phone::before {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      border-radius: 32px;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+
+    .chat-phone-top {
+      position: absolute;
+      top: 13px;
+      left: 50%;
+      width: 64px;
+      height: 11px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: #020103;
+      box-shadow: 0 1px 5px rgba(255, 255, 255, 0.08);
+      z-index: 10;
+    }
+
+    .chat-screen-wrap {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 27px;
+      background: #08060b;
+    }
+
+    .chat-scroll {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      touch-action: pan-y;
+    }
+
+    .chat-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .chat-long-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .chat-top-fade,
+    .chat-bottom-fade {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 32px;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .chat-top-fade {
+      top: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.32), transparent);
+    }
+
+    .chat-bottom-fade {
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.34), transparent);
+    }
+
+    .preview-hint {
+      margin-top: 11px;
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.48);
+      animation: hintPulse 2.2s ease-in-out infinite;
+    }
+
+    .preview-hint span {
+      margin-right: 5px;
+      color: #ff4b9b;
+      font-size: 12px;
+    }
+
+    /* Screenshot showcase */
+    .preview-gallery-title {
+      margin-top: 28px;
+      margin-bottom: 11px;
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: rgba(255, 255, 255, 0.48);
+    }
+
+    .preview-gallery {
+      width: 100vw;
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      display: flex;
+      gap: 15px;
+      padding: 10px calc((100% - min(500px, 100%)) / 2) 22px;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      perspective: 900px;
+    }
+
+    .preview-gallery::-webkit-scrollbar {
+      display: none;
+    }
+
+    .preview-shot {
+      position: relative;
+      width: 170px;
+      height: 335px;
+      flex: 0 0 170px;
+      padding: 6px;
+      scroll-snap-align: center;
+      border-radius: 27px;
+      background: linear-gradient(145deg, #27232c, #070609 55%, #17131b);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.65);
+      transform: scale(.88) rotateY(7deg);
+      opacity: .58;
+      transition: transform .45s ease, opacity .45s ease, filter .45s ease;
+      filter: saturate(.85);
+    }
+
+    .preview-shot.is-active {
+      transform: scale(1) rotateY(0deg);
+      opacity: 1;
+      filter: saturate(1);
+      box-shadow:
+        0 25px 65px rgba(0, 0, 0, 0.72),
+        0 0 32px rgba(255, 40, 150, 0.12);
+    }
+
+    .preview-shot::before {
+      content: "";
+      position: absolute;
+      top: 11px;
+      left: 50%;
+      width: 52px;
+      height: 9px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: #020103;
+      z-index: 5;
+    }
+
+    .preview-shot-screen {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 21px;
+      background: #08060b;
+    }
+
+    .preview-shot-screen img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: top center;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .preview-gallery-caption {
+      margin-top: 1px;
+      font-size: 7px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.38);
+    }
+
+    .preview-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 3px;
+    }
+
+    .preview-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      transition: transform .3s ease, background .3s ease;
+    }
+
+    .preview-dot.is-active {
+      transform: scale(1.5);
+      background: #ff4597;
+    }
+
+    @keyframes chatPhoneFloat {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(-1deg);
+      }
+
+      50% {
+        transform: translateY(-7px) rotate(1deg);
+      }
+    }
+
+    @keyframes hintPulse {
+
+      0%,
+      100% {
+        opacity: .45;
+      }
+
+      50% {
+        opacity: .95;
+      }
+    }
+
+    @media (max-width: 600px) {
+      #previewScreen {
+        padding-left: 13px;
+        padding-right: 13px;
+      }
+
+      .preview-content {
+        padding-top: 10px;
+      }
+
+      .chat-phone {
+        width: 205px;
+        height: 390px;
+      }
+
+      .preview-shot {
+        width: 155px;
+        height: 305px;
+        flex-basis: 155px;
+      }
+
+      .preview-gallery {
+        gap: 12px;
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+    }
+
+    /* SHARE BUTTON */
+    .share-button {
+      width: 100%;
+      margin-top: 12px;
+      padding: 12px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 14px;
+      background: transparent;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .share-button:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* ============================= */
+    /* SHARE POPUP */
+    /* ============================= */
+
+    .share-popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .share-popup-overlay.active {
+      display: flex;
+    }
+
+    .share-popup {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      padding: 28px 22px;
+      border-radius: 24px;
+      background: rgba(20, 20, 28, 0.97);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      animation: sharePopupIn 0.25s ease;
+    }
+
+    .share-popup h2 {
+      margin: 0;
+      text-align: center;
+      font-size: 24px;
+      color: #fff;
+    }
+
+    .share-subtitle {
+      margin: 8px 0 22px;
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .share-popup-close {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      width: 32px;
+      height: 32px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .share-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .share-options button {
+      padding: 13px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .share-options button:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.11);
+    }
+
+    .follow-divider {
+      height: 1px;
+      margin: 24px 0 18px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .share-popup h3 {
+      margin: 0 0 12px;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .social-handles {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .social-handles a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .social-handles a span {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    @keyframes sharePopupIn {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .people-scroll {
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      width: 100%;
+      height: 100%;
+      max-height: none;
+
+      box-sizing: border-box;
+
+      justify-content: flex-start;
+
+      padding-top: 105px;
+      padding-bottom: 120px;
+      padding-left: 0;
+      padding-right: 0;
+
+      scrollbar-width: none;
+    }
+
+    .people-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .people-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .community-counter {
+      position: absolute;
+      top: 60px;
+      right: 0;
+
+      z-index: 20;
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      margin: 0;
+      padding: 12px 14px;
+
+      border-radius: 14px;
+
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .community-counter-icon {
+      font-size: 20px;
+    }
+
+    .community-counter-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .community-counter-text strong {
+      font-size: 16px;
+    }
+
+    .community-counter-text span {
+      font-size: 11px;
+      opacity: 0.6;
+    }
+
+    .community-live {
+      margin-left: auto;
+      font-size: 9px;
+      opacity: 0.65;
+    }
+
+    /* code for games */
+    /* =========================================
+   PEOPLE GAMES
+   ========================================= */
+
+    .game-card {
+      margin-top: 18px;
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .game-tag {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      opacity: 0.65;
+    }
+
+    .game-card h3 {
+      margin: 0 0 16px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .game-card p {
+      margin: -5px 0 15px;
+      opacity: 0.65;
+      font-size: 13px;
+    }
+
+    .game-options {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .game-options button {
+      width: 100%;
+      padding: 13px 15px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.055);
+      color: inherit;
+      text-align: left;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease;
+    }
+
+    .game-options button:hover {
+      transform: translateY(-1px);
+    }
+
+    .game-options button:active {
+      transform: scale(0.98);
+    }
+
+    .game-options button.selected {
+      background: rgba(255, 255, 255, 0.13);
+      border-color: rgba(255, 255, 255, 0.28);
+      transform: translateX(4px);
+      font-weight: 700;
+    }
+
+    .game-result {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      margin-top: 0;
+      padding: 0 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      transition: all 0.3s ease;
+    }
+
+    .game-result.show {
+      max-height: 100px;
+      opacity: 1;
+      margin-top: 12px;
+      padding: 11px 12px;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+
+    /* Slider */
+
+    .vibe-slider {
+      width: 100%;
+      margin: 8px 0 4px;
+      cursor: pointer;
+    }
+
+    .vibe-labels {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      opacity: 0.65;
+    }
+
+    .vibe-labels span:nth-child(2) {
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 1;
+    }
+
+
+    /* Mobile */
+
+    @media (max-width: 600px) {
+      .game-card {
+        padding: 17px;
+        border-radius: 20px;
+      }
+
+      .game-card h3 {
+        font-size: 17px;
+      }
+
+      .game-options button {
+        padding: 12px 14px;
+      }
+    }
+
+    /* end of the game style */
+
+    /* for input form text size */
+    /* JOIN FORM - SELECT & CONSENT TEXT */
+
+    .notify-form select {
+      font-size: 17px !important;
+    }
+
+    .notify-form select option {
+      font-size: 17px;
+    }
+
+    .notify-form .consent,
+    .notify-form .consent label,
+    .notify-form .consent span {
+      font-size: 16px !important;
+      line-height: 1.5;
+    }
+
+    /* end of form style */
+
+    /* =========================================
+   JOIN PAGE - FULL PAGE SCROLL
+   ========================================= */
+
+    #join-screen {
+      overflow-y: auto !important;
+      overflow-x: hidden;
+      height: 100vh;
+      min-height: 100vh;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* bg change style */
+    /* =========================================================
+   PAGE BACKGROUND
+   ========================================================= */
+
+    #pageBackground {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      opacity: 1;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    #pageBackground.changing {
+      opacity: 0;
+    }
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =====================================
+       BACKGROUND
+       ===================================== -->
+
+  <div class="background"></div>
+
+  <div class="dark-overlay"></div>
+
+  <div class="pink-glow"></div>
+
+
+
+  <!-- =====================================
+       APP
+       ===================================== -->
+
+  <div class="app">
+
+
+    <!-- =====================================
+         TOP BAR
+         ===================================== -->
+
+    <header class="topbar">
+
+      <div class="brand">
+
+        <img src="assets/2night-logo.png" alt="2Night" class="brand-logo">
+
+      </div>
+
+
+      <div class="age-badge">
+        18+
+      </div>
+
+    </header>
+
+
+
+    <!-- =====================================
+         SCREEN CONTAINER
+         ===================================== -->
+
+    <main class="screen-container">
+
+
+
+      <!-- =====================================
+           HOME SCREEN
+           ===================================== -->
+
+      <section class="screen active" id="homeScreen">
+
+        <div class="launch-home">
+
+
+
+
+
+          <div class="app-download-row">
+
+            <div class="app-icon">
+              <img src="assets/icon.png" alt="2Night App">
+            </div>
+
+            <button class="download-btn" disabled>
+
+              <span class="download-title">DOWNLOAD</span>
+
+              <span class="download-countdown">
+                <span id="days">00</span>d :
+                <span id="hours">00</span>h :
+                <span id="minutes">00</span>m :
+                <span id="seconds">00</span>s
+              </span>
+
+            </button>
+
+          </div>
+
+          <!-- =================================
+     HOW TO ACCESS AFTER LAUNCH
+     ================================= -->
+
+          <button class="access-button" onclick="openAccessModal()">
+            <span>HOW TO ACCESS</span>
+            <span>AFTER LAUNCH →</span>
+          </button>
+
+          <!-- AVAILABLE DATE -->
+
+          <div class="available-date">
+
+            <span>
+              AVAILABLE ON
+            </span>
+
+            <strong>
+              04 NOVEMBER 2026
+            </strong>
+            <br>
+          </div>
+
+
+
+          <!-- =====================================================
+     APP STORE + GOOGLE PLAY
+     ===================================================== -->
+
+          <div class="store-section">
+
+            <div class="store-title">
+              NO AVAILABLE
+            </div>
+
+            <div class="store-buttons">
+
+              <button class="store-button disabled" disabled>
+                <span class="store-badge">NOT AVAILABLE</span>
+                <span class="store-icon"></span>
+                <span class="store-text">
+
+                  <strong>App Store</strong>
+                </span>
+              </button>
+
+              <button class="store-button disabled" disabled>
+                <span class="store-badge">NOT AVAILABLE</span>
+                <span class="store-icon play-icon">▶</span>
+                <span class="store-text">
+
+                  <strong>Google Play</strong>
+                </span>
+              </button>
+
+            </div>
+
+            <!-- SHARE BUTTON -->
+            <button class="share-button" onclick="shareWebsite()">
+              ↗ SHARE 2NIGHT
+            </button>
+          </div>
+
+        </div>
+
+
+  </div>
+
+  </section>
+
+
+
+  <!-- =====================================
+           ABOUT SCREEN
+           ===================================== -->
+
+  <section class="screen" id="aboutScreen">
+
+    <button class="back-button" onclick="goHome()">
+      ←
+    </button>
+
+
+    <div class="screen-content">
+
+
+      <div class="section-tag">
+        ABOUT 2NIGHT
+      </div>
+
+
+      <h2>
+        Not another<br>
+        <span>ordinary</span> app.
+      </h2>
+
+
+      <p class="description">
+
+        2Night is being built for adults
+        who want to meet, connect and
+        discover people looking for
+        the same kind of experience.
+
+      </p>
+
+
+
+      <!-- FEATURES -->
+
+      <div class="mini-features">
+
+
+        <div class="mini-card">
+
+          <div class="mini-icon">
+            ♡
+          </div>
+
+          <div>
+
+            <strong>
+              Fully Free
+            </strong>
+
+            <p>
+              No premium wall.
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="mini-card">
+
+          <div class="mini-icon">
+            ⚡
+          </div>
+
+          <div>
+
+            <strong>
+              Simple
+            </strong>
+
+            <p>
+              No unnecessary complications.
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="mini-card">
+
+          <div class="mini-icon">
+            🌙
+          </div>
+
+          <div>
+
+            <strong>
+              For Tonight
+            </strong>
+
+            <p>
+              Made for spontaneous connections.
+            </p>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================
+           PREVIEW SCREEN
+           ===================================== -->
+
+  <section class="screen" id="previewScreen">
+
+    <button class="back-button" onclick="goHome()">
+      ←
+    </button>
+
+    <div class="screen-content preview-content">
+
+      <div class="preview-intro">
+        <div class="section-tag">
+          FIRST LOOK
+        </div>
+
+        <h2>
+          See it before<br>
+          <span>you join.</span>
+        </h2>
+
+        <p class="description">
+          A closer look at the 2Night experience — profiles, matching,
+          conversations, tips and more.
+        </p>
+      </div>
+
+      <!-- =================================
+               FEATURED LONG CHAT
+               ================================= -->
+      <div class="chat-phone" id="chatPhone">
+
+        <div class="chat-phone-top"></div>
+
+        <div class="chat-screen-wrap">
+
+          <div class="chat-scroll" id="chatScroll">
+            <img class="chat-long-image" src="assets/ui/chat-long.jpeg" alt="2Night long chat preview"
+              draggable="false">
+          </div>
+
+          <div class="chat-top-fade"></div>
+          <div class="chat-bottom-fade"></div>
+
+        </div>
+
+      </div>
+
+      <div class="preview-hint">
+        <span>↕</span>
+        SCROLL INSIDE THE PHONE
+      </div>
+
+      <!-- =================================
+               OTHER APP SCREENS
+               ================================= -->
+      <div class="preview-gallery-title">
+        EXPLORE THE APP
+      </div>
+
+      <div class="preview-gallery" id="previewGallery">
+
+        <div class="preview-shot">
+          <div class="preview-shot-screen">
+            <img src="assets/ui/welcome-sunny.jpeg" alt="2Night welcome screen" draggable="false">
+          </div>
+        </div>
+
+        <div class="preview-shot">
+          <div class="preview-shot-screen">
+            <img src="assets/ui/welcome-zoya.jpeg" alt="2Night welcome preview" draggable="false">
+          </div>
+        </div>
+
+        <div class="preview-shot">
+          <div class="preview-shot-screen">
+            <img src="assets/ui/sunny-profile.jpeg" alt="2Night profile preview" draggable="false">
+          </div>
+        </div>
+
+        <div class="preview-shot">
+          <div class="preview-shot-screen">
+            <img src="assets/ui/zoya-profile.jpeg" alt="2Night profile preview" draggable="false">
+          </div>
+        </div>
+
+        <div class="preview-shot">
+          <div class="preview-shot-screen">
+            <img src="assets/ui/match-screen.jpeg" alt="2Night match screen" draggable="false">
+          </div>
+        </div>
+
+        <div class="preview-shot">
+          <div class="preview-shot-screen">
+            <img src="assets/ui/inbox-screen.jpeg" alt="2Night inbox screen" draggable="false">
+          </div>
+        </div>
+
+        <div class="preview-shot">
+          <div class="preview-shot-screen">
+            <img src="assets/ui/tips-screen.jpeg" alt="2Night tips screen" draggable="false">
+          </div>
+        </div>
+
+        <div class="preview-shot">
+          <div class="preview-shot-screen">
+            <img src="assets/ui/reviews-screeen.jpeg" alt="2Night reviews screen" draggable="false">
+          </div>
+        </div>
+
+        <div class="preview-shot">
+          <div class="preview-shot-screen">
+            <img src="assets/ui/privacy-setting.jpeg" alt="2Night privacy settings" draggable="false">
+          </div>
+        </div>
+
+        <div class="preview-shot">
+          <div class="preview-shot-screen">
+            <img src="assets/ui/account-safety.jpeg" alt="2Night account safety" draggable="false">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="preview-gallery-caption">
+        Swipe to explore • 10 app screens
+      </div>
+
+      <div class="preview-dots" id="previewDots"></div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================
+           PEOPLE SCREEN
+           ===================================== -->
+
+  <section class="screen" id="peopleScreen">
+
+    <button class="back-button" onclick="goHome()">
+      ←
+    </button>
+    <div class="community-counter">
+      <div class="community-counter-icon">👥</div>
+      <div class="community-counter-text">
+        <strong id="joinedCount">1,247+</strong>
+        <span>People joined 2Night</span>
+      </div>
+      <div class="community-live">● LIVE</div>
+    </div>
+
+    <div class="screen-content people-content people-scroll">
+
+      <div class="section-tag">
+        THE COMMUNITY
+      </div>
+
+
+      <h2>
+        People are<br>
+        <span>waiting.</span> 👀
+      </h2>
+
+
+      <p class="description">
+        Who's joining 2Night?
+      </p>
+
+
+
+      <!-- POLL -->
+
+      <div class="poll-card">
+
+
+        <h3>
+          Who's waiting for 2Night?
+        </h3>
+
+
+        <p class="poll-subtitle">
+          Anonymous poll
+        </p>
+
+
+
+        <div class="poll-options" id="pollOptions">
+
+
+          <button class="poll-button" onclick="votePoll('male')">
+
+            <span>
+              ♂
+            </span>
+
+            Male
+
+          </button>
+
+
+
+          <button class="poll-button" onclick="votePoll('female')">
+
+            <span>
+              ♀
+            </span>
+
+            Female
+
+          </button>
+
+
+        </div>
+
+
+
+        <!-- POLL RESULTS -->
+
+        <div class="poll-results" id="pollResults">
+
+
+          <div class="result">
+
+
+            <div class="result-top">
+
+              <span>
+                Male
+              </span>
+
+              <strong id="malePercent">
+                50%
+              </strong>
+
+            </div>
+
+
+            <div class="result-bar">
+
+              <div class="result-fill" id="maleBar"></div>
+
+            </div>
+
+
+          </div>
+
+
+
+          <div class="result">
+
+
+            <div class="result-top">
+
+              <span>
+                Female
+              </span>
+
+              <strong id="femalePercent">
+                50%
+              </strong>
+
+            </div>
+
+
+            <div class="result-bar">
+
+              <div class="result-fill" id="femaleBar"></div>
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- COMMENTS -->
+
+      <div class="comment-title">
+        WHAT PEOPLE ARE SAYING
+      </div>
+
+
+      <div class="comment-box">
+
+
+        <div class="comment">
+
+          <span>
+            “
+          </span>
+
+          Finally something different 👀
+
+        </div>
+
+
+
+        <div class="comment">
+
+          <span>
+            “
+          </span>
+
+          When is this launching? 🔥
+
+        </div>
+
+
+      </div>
+
+
+      <p class="sample-note">
+        Community comments will appear here.
+      </p>
+
+      <!-- starting of the games -->
+      <!-- =====================================
+     PEOPLE GAMES
+     ===================================== -->
+
+      <!-- GAME 1 -->
+      <div class="game-card">
+        <div class="game-tag">🌙 TONIGHT VIBE</div>
+        <h3>What's your mood tonight?</h3>
+
+        <div class="game-options">
+          <button onclick="playPeopleGame(this,'peopleGame1','😇 Just chilling')">😇 Just chilling</button>
+          <button onclick="playPeopleGame(this,'peopleGame1','💬 Want to talk')">💬 Want to talk</button>
+          <button onclick="playPeopleGame(this,'peopleGame1','😏 Feeling flirty')">😏 Feeling flirty</button>
+          <button onclick="playPeopleGame(this,'peopleGame1','🔥 Feeling spontaneous')">🔥 Spontaneous</button>
+        </div>
+
+        <div class="game-result" id="peopleGame1"></div>
+      </div>
+
+
+      <!-- GAME 2 -->
+      <div class="game-card">
+        <div class="game-tag">⚡ PICK ONE</div>
+        <h3>What's more important for a first connection?</h3>
+
+        <div class="game-options">
+          <button onclick="playPeopleGame(this,'peopleGame2','😂 Great humour')">😂 Humour</button>
+          <button onclick="playPeopleGame(this,'peopleGame2','🧠 Good conversation')">🧠 Conversation</button>
+          <button onclick="playPeopleGame(this,'peopleGame2','✨ Instant chemistry')">✨ Chemistry</button>
+          <button onclick="playPeopleGame(this,'peopleGame2','❤️ Feeling comfortable')">❤️ Comfort</button>
+        </div>
+
+        <div class="game-result" id="peopleGame2"></div>
+      </div>
+
+
+      <!-- GAME 3 -->
+      <div class="game-card">
+        <div class="game-tag">😏 FIRST MOVE</div>
+        <h3>Who should make the first move?</h3>
+
+        <div class="game-options">
+          <button onclick="playPeopleGame(this,'peopleGame3','🙋 Whoever is interested')">🙋 Whoever wants</button>
+          <button onclick="playPeopleGame(this,'peopleGame3','😏 The confident one')">😏 Confident one</button>
+          <button onclick="playPeopleGame(this,'peopleGame3','👀 Let the vibe decide')">👀 Let the vibe decide</button>
+        </div>
+
+        <div class="game-result" id="peopleGame3"></div>
+      </div>
+
+
+      <!-- GAME 4 -->
+      <div class="game-card">
+        <div class="game-tag">💚 GREEN FLAG</div>
+        <h3>What's the biggest green flag?</h3>
+
+        <div class="game-options">
+          <button onclick="playPeopleGame(this,'peopleGame4','😂 Makes you laugh')">😂 Makes you laugh</button>
+          <button onclick="playPeopleGame(this,'peopleGame4','👂 Actually listens')">👂 Listens</button>
+          <button onclick="playPeopleGame(this,'peopleGame4','✨ Respects boundaries')">✨ Respect</button>
+          <button onclick="playPeopleGame(this,'peopleGame4','🔥 Confident')">🔥 Confidence</button>
+        </div>
+
+        <div class="game-result" id="peopleGame4"></div>
+      </div>
+
+
+      <!-- GAME 5 -->
+      <div class="game-card">
+        <div class="game-tag">📍 PERFECT MEET</div>
+        <h3>Where would you pick for a first meet?</h3>
+
+        <div class="game-options">
+          <button onclick="playPeopleGame(this,'peopleGame5','☕ Cozy cafe')">☕ Cafe</button>
+          <button onclick="playPeopleGame(this,'peopleGame5','🍽️ Dinner')">🍽️ Dinner</button>
+          <button onclick="playPeopleGame(this,'peopleGame5','🌆 Night walk')">🌆 Night walk</button>
+          <button onclick="playPeopleGame(this,'peopleGame5','🎲 Something spontaneous')">🎲 Spontaneous</button>
+        </div>
+
+        <div class="game-result" id="peopleGame5"></div>
+      </div>
+
+
+      <!-- GAME 6 -->
+      <div class="game-card">
+        <div class="game-tag">💬 FIRST MESSAGE</div>
+        <h3>Which opener would you actually send?</h3>
+
+        <div class="game-options">
+          <button onclick="playPeopleGame(this,'peopleGame6','👀 What brings you here?')">👀 What brings you
+            here?</button>
+          <button onclick="playPeopleGame(this,'peopleGame6','😏 You seem interesting')">😏 You seem
+            interesting</button>
+          <button onclick="playPeopleGame(this,'peopleGame6','🌙 What is your vibe tonight?')">🌙 Your vibe
+            tonight?</button>
+          <button onclick="playPeopleGame(this,'peopleGame6','😂 Tell me something random')">😂 Something
+            random</button>
+        </div>
+
+        <div class="game-result" id="peopleGame6"></div>
+      </div>
+
+
+      <!-- GAME 7 -->
+      <div class="game-card">
+        <div class="game-tag">🚦 GREEN OR RED</div>
+        <h3>They reply after 2 minutes. Your reaction?</h3>
+
+        <div class="game-options">
+          <button onclick="playPeopleGame(this,'peopleGame7','💚 Green flag')">💚 Green flag</button>
+          <button onclick="playPeopleGame(this,'peopleGame7','😏 Depends on the vibe')">😏 Depends</button>
+          <button onclick="playPeopleGame(this,'peopleGame7','❤️‍🔥 Too fast')">❤️‍🔥 Too fast</button>
+        </div>
+
+        <div class="game-result" id="peopleGame7"></div>
+      </div>
+
+
+      <!-- GAME 8 -->
+      <div class="game-card">
+        <div class="game-tag">🎭 YOUR TYPE</div>
+        <h3>What catches your attention first?</h3>
+
+        <div class="game-options">
+          <button onclick="playPeopleGame(this,'peopleGame8','✨ Their smile')">✨ Smile</button>
+          <button onclick="playPeopleGame(this,'peopleGame8','🧠 Their personality')">🧠 Personality</button>
+          <button onclick="playPeopleGame(this,'peopleGame8','😂 Their humour')">😂 Humour</button>
+          <button onclick="playPeopleGame(this,'peopleGame8','🔥 Their confidence')">🔥 Confidence</button>
+        </div>
+
+        <div class="game-result" id="peopleGame8"></div>
+      </div>
+
+
+      <!-- GAME 9 -->
+      <div class="game-card">
+        <div class="game-tag">🌶️ BOLDNESS</div>
+        <h3>How spontaneous are you tonight?</h3>
+
+        <input class="vibe-slider" type="range" min="0" max="100" value="50" oninput="updatePeopleSlider(this)">
+
+        <div class="vibe-labels">
+          <span>😇 Chill</span>
+          <span id="peopleSliderValue">50%</span>
+          <span>🔥 Bold</span>
+        </div>
+
+        <div class="game-result" id="peopleGame9"></div>
+      </div>
+
+
+      <!-- GAME 10 -->
+      <div class="game-card">
+        <div class="game-tag">🌙 PERFECT NIGHT</div>
+        <h3>Pick your ideal plan.</h3>
+
+        <div class="game-options">
+          <button onclick="playPeopleGame(this,'peopleGame10','☕ Coffee & conversation')">☕ Coffee</button>
+          <button onclick="playPeopleGame(this,'peopleGame10','🚗 Night drive')">🚗 Night drive</button>
+          <button onclick="playPeopleGame(this,'peopleGame10','🍽️ Dinner & vibes')">🍽️ Dinner</button>
+          <button onclick="playPeopleGame(this,'peopleGame10','✨ Something unexpected')">✨ Unexpected</button>
+        </div>
+
+        <div class="game-result" id="peopleGame10"></div>
+      </div>
+
+
+      <!-- GAME 11 -->
+      <div class="game-card">
+        <div class="game-tag">🧠 QUICK CHEMISTRY</div>
+        <h3>What creates chemistry faster?</h3>
+
+        <div class="game-options">
+          <button onclick="playPeopleGame(this,'peopleGame11','💬 Deep conversation')">💬 Conversation</button>
+          <button onclick="playPeopleGame(this,'peopleGame11','😂 Laughing together')">😂 Laughing</button>
+          <button onclick="playPeopleGame(this,'peopleGame11','👀 Eye contact')">👀 Eye contact</button>
+          <button onclick="playPeopleGame(this,'peopleGame11','✨ Instant spark')">✨ Instant spark</button>
+        </div>
+
+        <div class="game-result" id="peopleGame11"></div>
+      </div>
+
+
+      <!-- GAME 12 -->
+      <div class="game-card">
+        <div class="game-tag">⏰ TIMING</div>
+        <h3>When do you usually make a move?</h3>
+
+        <div class="game-options">
+          <button onclick="playPeopleGame(this,'peopleGame12','💬 After a good conversation')">💬 After
+            chatting</button>
+          <button onclick="playPeopleGame(this,'peopleGame12','😏 When chemistry feels right')">😏 When it
+            clicks</button>
+          <button onclick="playPeopleGame(this,'peopleGame12','🌙 I go with the flow')">🌙 Go with the flow</button>
+        </div>
+
+        <div class="game-result" id="peopleGame12"></div>
+      </div>
+
+
+      <!-- GAME 13 -->
+      <div class="game-card">
+        <div class="game-tag">🎲 RANDOM TONIGHT</div>
+        <h3>Need a conversation starter?</h3>
+
+        <p>Tap below and get a random question.</p>
+
+        <div class="game-options">
+          <button onclick="randomPeopleQuestion()">🎲 Give me one</button>
+        </div>
+
+        <div class="game-result" id="peopleGame13"></div>
+      </div>
+
+
+      <!-- GAME 14 -->
+      <div class="game-card">
+        <div class="game-tag">❤️ THIS OR THAT</div>
+        <h3>Choose your ideal connection.</h3>
+
+        <div class="game-options">
+          <button onclick="playPeopleGame(this,'peopleGame14','🌙 Slow burn')">🌙 Slow burn</button>
+          <button onclick="playPeopleGame(this,'peopleGame14','🔥 Instant spark')">🔥 Instant spark</button>
+        </div>
+
+        <div class="game-result" id="peopleGame14"></div>
+      </div>
+
+
+      <!-- GAME 15 -->
+      <div class="game-card">
+        <div class="game-tag">👀 COMMUNITY CHOICE</div>
+        <h3>What makes someone instantly interesting?</h3>
+
+        <div class="game-options">
+          <button onclick="playPeopleGame(this,'peopleGame15','😂 Their humour')">😂 Humour</button>
+          <button onclick="playPeopleGame(this,'peopleGame15','🧠 Their mind')">🧠 Intelligence</button>
+          <button onclick="playPeopleGame(this,'peopleGame15','✨ Their vibe')">✨ Vibe</button>
+          <button onclick="playPeopleGame(this,'peopleGame15','😏 Their confidence')">😏 Confidence</button>
+        </div>
+
+        <div class="game-result" id="peopleGame15"></div>
+      </div>
+      <!-- ending of the games -->
+
+      <!-- end of people scroll -->
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================
+           NOTIFY SCREEN
+           ===================================== -->
+
+  <section class="screen" id="notifyScreen">
+
+    <button class="back-button" onclick="goHome()">
+      ←
+    </button>
+
+
+    <div class="screen-content" id="join-screen">
+
+
+      <div class="section-tag">
+        DON'T MISS IT
+      </div>
+
+
+      <h2>
+        Be there when<br>
+        <span>2Night goes live.</span>
+      </h2>
+
+
+      <p class="description">
+
+        Leave your details and we'll
+        let you know when 2Night India
+        launches.
+
+      </p>
+
+
+
+      <!-- NOTIFY FORM -->
+
+      <form class="notify-form" onsubmit="submitNotify(event)">
+
+
+        <input type="text" id="name" placeholder="Your name" required>
+
+        <input type="text" id="contact" placeholder="Email or phone number" required>
+
+        <select id="gender" required>
+          <option value="">Select gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+
+        <select id="city" required>
+
+          <option value="">
+            Select your city
+          </option>
+
+          <option>
+            Mumbai
+          </option>
+
+          <option>
+            Pune
+          </option>
+
+          <option>
+            Delhi
+          </option>
+
+          <option>
+            Bengaluru
+          </option>
+
+          <option>
+            Hyderabad
+          </option>
+
+          <option>
+            Chennai
+          </option>
+
+          <option>
+            Kolkata
+          </option>
+
+          <option>
+            Ahmedabad
+          </option>
+
+          <option>
+            Jaipur
+          </option>
+
+          <option>
+            Other
+          </option>
+
+        </select>
+
+
+
+        <label class="consent">
+
+          <input type="checkbox" required>
+
+          <span>
+
+            I'm 18+ and agree to receive
+            the 2Night India launch
+            notification.
+
+          </span>
+
+        </label>
+
+
+
+        <button class="main-button form-button" type="submit">
+          NOTIFY ME 🔥
+        </button>
+
+
+      </form>
+      <br>
+      <!-- note -->
+      <p class="notify-note">
+        📩 <strong>Stay connected with 2Night</strong><br>
+        Fill in your details and we'll contact you by
+        <strong>call or message when 2Night is ready to launch.</strong> ❤️
+        <br>
+        <span>Make sure you provide an active email address or phone number.</span>
+      </p>
+
+      <div class="form-message" id="notifyMessage"></div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================
+           PROMOTE SCREEN
+           ===================================== -->
+
+  <section class="screen" id="promoteScreen">
+
+    <button class="back-button" onclick="goHome()">
+      ←
+    </button>
+
+
+    <div class="screen-content">
+
+
+      <div class="section-tag">
+        CREATOR / PROMOTER
+      </div>
+
+
+      <h2>
+        Want to help<br>
+        <span>spread the word?</span>
+      </h2>
+
+
+      <p class="description">
+
+        Creators, meme pages and people
+        who want to promote 2Night can
+        connect with us.
+
+      </p>
+
+
+
+      <div class="creator-box">
+
+
+        <div class="creator-icon">
+          ✦
+        </div>
+
+
+        <h3>
+          Let's make some noise.
+        </h3>
+
+
+        <p>
+
+          Tell us who you are and how
+          you'd like to promote 2Night.
+
+        </p>
+
+
+        <a href="mailto:hello@2nightindia.com" class="main-button creator-button">
+          CONTACT 2NIGHT
+        </a>
+
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  </main>
+
+
+
+  <!-- =====================================
+         BOTTOM NAVIGATION
+         ===================================== -->
+
+  <nav class="bottom-nav">
+
+
+    <button class="nav-item active" data-screen="homeScreen" onclick="openScreen('homeScreen')">
+
+      <span>
+        ⌂
+      </span>
+
+      <small>
+        Home
+      </small>
+
+    </button>
+
+
+
+    <button class="nav-item" data-screen="aboutScreen" onclick="openScreen('aboutScreen')">
+
+      <span>
+        ♥
+      </span>
+
+      <small>
+        About
+      </small>
+
+    </button>
+
+
+
+    <button class="nav-item" data-screen="previewScreen" onclick="openScreen('previewScreen')">
+
+      <span>
+        ◉
+      </span>
+
+      <small>
+        Preview
+      </small>
+
+    </button>
+
+
+
+    <button class="nav-item" data-screen="peopleScreen" onclick="openScreen('peopleScreen')">
+
+      <span>
+        ♡
+      </span>
+
+      <small>
+        People
+      </small>
+
+    </button>
+
+
+
+    <button class="nav-item" data-screen="notifyScreen" onclick="openScreen('notifyScreen')">
+
+      <span>
+        ✦
+      </span>
+
+      <small>
+        Join
+      </small>
+
+    </button>
+
+
+  </nav>
+
+
+
+  <!-- =====================================
+         FOOTER
+         ===================================== -->
+
+  <div class="mini-footer">
+    2NIGHT INDIA • 18+
+  </div>
+
+
+  </div>
+
+
+  <!-- =================================
+     ACCESS MODAL
+     ================================= -->
+
+  <div class="access-modal" id="accessModal" onclick="closeAccessModal(event)">
+
+    <div class="access-modal-box" onclick="event.stopPropagation()">
+
+      <button class="modal-close" onclick="closeAccessModal()">
+        ×
+      </button>
+
+
+      <div class="modal-tag">
+        2NIGHT INDIA
+      </div>
+
+
+      <h2>
+        How to access
+        <br>
+        <span>2Night after launch?</span>
+      </h2>
+
+
+      <p class="modal-description">
+        2Night will be available directly
+        through the official 2Night India website.
+      </p>
+
+
+      <div class="access-steps">
+
+        <div class="access-step">
+          <div class="step-number">01</div>
+          <div>
+            <strong>Visit 2Night</strong>
+            <p>Open our official Instagram or social page.</p>
+          </div>
+        </div>
+
+        <div class="access-step">
+          <div class="step-number">02</div>
+          <div>
+            <strong>Open the Bio Link</strong>
+            <p>Tap the official 2Night link in the bio.</p>
+          </div>
+        </div>
+
+        <div class="access-step">
+          <div class="step-number">03</div>
+          <div>
+            <strong>Open the Website</strong>
+            <p>You'll be taken to the official 2Night website.</p>
+          </div>
+        </div>
+
+        <div class="access-step">
+          <div class="step-number">04</div>
+          <div>
+            <strong>Download & Install</strong>
+            <p>Tap Download at the top and install the app.</p>
+          </div>
+        </div>
+
+        <div class="access-note">
+          <br>
+          <strong>*NOTE*</strong>
+          <p>2Night can only be downloaded this way. It's not available on the App Store or Google Play Store.</p>
+        </div>
+
+      </div>
+
+
+      <button class="modal-done" onclick="closeAccessModal()">
+        GOT IT
+      </button>
+
+    </div>
+
+  </div>
+  <!-- JAVASCRIPT -->
+
+  <!-- CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+
+    const SUPABASE_URL = "https://liuhxndxblvawtqejkmi.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_PKS8PMA6wOQImJVxjKtvfg_mbtrOheL";
+
+    const supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
+    );
+    /* =========================================
+       2NIGHT INDIA — WEBSITE JAVASCRIPT
+       ========================================= */
+
+
+    /* =========================================
+       COUNTDOWN
+       ========================================= */
+
+    const launchDate = new Date(
+      "November 4, 2026 00:00:00"
+    ).getTime();
+
+
+    function updateCountdown() {
+
+      const now = new Date().getTime();
+
+      const difference = launchDate - now;
+
+
+      if (difference <= 0) {
+
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+
+        return;
+      }
+
+
+      const days = Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+      );
+
+
+      const hours = Math.floor(
+        (difference / (1000 * 60 * 60)) % 24
+      );
+
+
+      const minutes = Math.floor(
+        (difference / (1000 * 60)) % 60
+      );
+
+
+      const seconds = Math.floor(
+        (difference / 1000) % 60
+      );
+
+
+      document.getElementById("days").textContent =
+        String(days).padStart(2, "0");
+
+
+      document.getElementById("hours").textContent =
+        String(hours).padStart(2, "0");
+
+
+      document.getElementById("minutes").textContent =
+        String(minutes).padStart(2, "0");
+
+
+      document.getElementById("seconds").textContent =
+        String(seconds).padStart(2, "0");
+    }
+
+
+    updateCountdown();
+
+    setInterval(updateCountdown, 1000);
+
+
+
+    /* =========================================
+       SCREEN NAVIGATION
+       ========================================= */
+
+    /* =========================================
+   SCREEN NAVIGATION
+   ========================================= */
+
+   function openScreen(screenId) {
+
+  const screens =
+    document.querySelectorAll(".screen");
+
+  screens.forEach((screen) => {
+    screen.classList.remove("active");
+  });
+
+  const target =
+    document.getElementById(screenId);
+
+  if (target) {
+    target.classList.add("active");
+  }
+
+  /* ==============================
+     CHANGE BACKGROUND
+     ============================== */
+
+/* ==============================
+   CHANGE BACKGROUND WITH ANIMATION
+   ============================== */
+
+const backgrounds = {
+  homeScreen: "assets/bg/bg1.webp",
+  previewScreen: "assets/bg/bg3.webp",
+  peopleScreen: "assets/bg/bg2.webp",
+  notifyScreen: "assets/bg/bg4.webp",
+  promoteScreen: "assets/bg/bg5.webp"
+};
+
+const background = document.querySelector(".background");
+
+if (background && backgrounds[screenId]) {
+
+  background.classList.remove("bg-changing");
+
+  void background.offsetWidth;
+
+  background.classList.add("bg-changing");
+
+  setTimeout(() => {
+    background.style.backgroundImage =
+      `url("${backgrounds[screenId]}")`;
+  }, 180);
+
+  setTimeout(() => {
+    background.classList.remove("bg-changing");
+  }, 650);
+}
+
+  updateNavigation(screenId);
+}
+    /* =========================================
+       NAVIGATION ACTIVE STATE
+       ========================================= */
+
+    function updateNavigation(screenId) {
+
+      const navItems =
+        document.querySelectorAll(".nav-item");
+
+
+      navItems.forEach((item) => {
+
+        item.classList.remove("active");
+
+
+        if (
+          item.dataset.screen === screenId
+        ) {
+
+          item.classList.add("active");
+
+        }
+
+      });
+
+    }
+
+
+    /* =========================================
+       HOME
+       ========================================= */
+
+    function goHome() {
+
+      openScreen("homeScreen");
+
+    }
+
+
+    /* =========================================
+       SHARE
+       ========================================= */
+
+    // =============================
+    // SHARE POPUP FUNCTIONS
+    // =============================
+
+    function shareWebsite() {
+      document.getElementById("sharePopup").classList.add("active");
+    }
+
+    function closeSharePopup() {
+      document.getElementById("sharePopup").classList.remove("active");
+    }
+
+    document.addEventListener("click", function (e) {
+      const popup = document.getElementById("sharePopup");
+
+      if (e.target === popup) {
+        closeSharePopup();
+      }
+    });
+
+    function closeSharePopup() {
+      document.getElementById("sharePopup").classList.remove("active");
+    }
+
+    const shareMessage = `🌙 Meet ♥ Connect ♥ Tonight
+
+Looking for someone to connect with tonight?
+
+Discover 2Night — meet new people, connect privately and make your night interesting. 😉
+
+🔗 Official Website: ${window.location.href}
+
+📸 Instagram: @your_2night_handle
+📱 Follow us on social media: @your_handle
+
+Not available on the App Store or Google Play Store. Download only from the official 2Night website.`;
+
+    function shareWhatsApp() {
+      window.open(
+        "https://wa.me/?text=" + encodeURIComponent(shareMessage),
+        "_blank"
+      );
+    }
+
+    function shareSMS() {
+      window.location.href =
+        "sms:?body=" + encodeURIComponent(shareMessage);
+    }
+
+    // Copy website link with fallback for browsers where Clipboard API is unavailable
+    function copyShareLink() {
+      const link = window.location.href;
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(link)
+          .then(() => {
+            alert("2Night link copied!");
+          })
+          .catch(() => {
+            fallbackCopyLink(link);
+          });
+      } else {
+        fallbackCopyLink(link);
+      }
+    }
+
+    // Fallback copy method
+    function fallbackCopyLink(link) {
+      const textArea = document.createElement("textarea");
+
+      textArea.value = link;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-9999px";
+
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+      try {
+        document.execCommand("copy");
+        alert("2Night link copied!");
+      } catch (error) {
+        alert("Please copy the link manually.");
+      }
+
+      document.body.removeChild(textArea);
+    }
+    async function shareMore() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "2Night — Meet ♥ Connect ♥ Tonight",
+            text: shareMessage,
+            url: window.location.href
+          });
+        } catch (error) {
+          // User closed the share sheet
+        }
+      } else {
+        copyShareLink();
+      }
+    }
+
+
+    /* =========================================
+       POLL
+       ========================================= */
+
+
+    /*
+      Temporary local poll.
+    
+      Later this will be replaced with
+      Supabase so all visitors share the
+      same real results.
+    */
+
+    let maleVotes =
+      Number(
+        localStorage.getItem("2nightMaleVotes")
+      ) || 0;
+
+
+    let femaleVotes =
+      Number(
+        localStorage.getItem("2nightFemaleVotes")
+      ) || 0;
+
+
+    function votePoll(gender) {
+
+      const alreadyVoted =
+        localStorage.getItem(
+          "2nightPollVoted"
+        );
+      localStorage.setItem(
+        "2nightPollSelection",
+        gender
+      );
+
+      if (alreadyVoted) {
+
+        showPollResults();
+
+        return;
+
+      }
+
+
+      if (gender === "male") {
+
+        maleVotes++;
+
+      }
+
+
+      if (gender === "female") {
+
+        femaleVotes++;
+
+      }
+
+
+      localStorage.setItem(
+        "2nightMaleVotes",
+        maleVotes
+      );
+
+
+      localStorage.setItem(
+        "2nightFemaleVotes",
+        femaleVotes
+      );
+
+
+      localStorage.setItem(
+        "2nightPollVoted",
+        "true"
+      );
+
+
+      showPollResults();
+
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const selected =
+        localStorage.getItem(
+          "2nightPollSelection"
+        );
+
+      if (!selected) return;
+
+      const buttons =
+        document.querySelectorAll(
+          ".poll-button"
+        );
+
+      buttons.forEach(function (button) {
+
+        const text =
+          button.textContent
+            .trim()
+            .toLowerCase();
+
+        if (text.includes(selected)) {
+          button.classList.add("selected");
+        }
+      });
+
+    });
+
+    function showPollResults() {
+
+      let malePercent =
+        Number(localStorage.getItem("2nightMalePercent"));
+
+      let lastUpdate =
+        Number(localStorage.getItem("2nightPollPercentTime"));
+
+      const now = Date.now();
+      const oneHour = 60 * 60 * 1000;
+
+      // First time OR 1 hour completed
+      if (
+        !malePercent ||
+        !lastUpdate ||
+        (now - lastUpdate) >= oneHour
+      ) {
+
+        // Male: 50% - 60%
+        malePercent =
+          Math.floor(Math.random() * 11) + 50;
+
+        localStorage.setItem(
+          "2nightMalePercent",
+          malePercent
+        );
+
+        localStorage.setItem(
+          "2nightPollPercentTime",
+          now
+        );
+      }
+
+      // Female always makes total exactly 100%
+      const femalePercent =
+        100 - malePercent;
+
+      document.getElementById(
+        "malePercent"
+      ).textContent =
+        malePercent + "%";
+
+      document.getElementById(
+        "femalePercent"
+      ).textContent =
+        femalePercent + "%";
+
+      document.getElementById(
+        "maleBar"
+      ).style.width =
+        malePercent + "%";
+
+      document.getElementById(
+        "femaleBar"
+      ).style.width =
+        femalePercent + "%";
+    }
+
+    /* =========================================
+       NOTIFY FORM
+       ========================================= */
+
+
+    /*
+      Temporary frontend version.
+    
+      Supabase connection will be added later.
+    */
+
+    async function submitNotify(event) {
+      event.preventDefault();
+
+      const name =
+        document.getElementById("name").value.trim();
+
+      const contact =
+        document.getElementById("contact").value.trim();
+
+      const gender =
+        document.getElementById("gender").value;
+
+      const city =
+        document.getElementById("city").value;
+
+      const message =
+        document.getElementById("notifyMessage");
+
+      if (!name || !contact || !gender || !city) {
+        message.textContent =
+          "Please complete all required fields.";
+        return;
+      }
+
+      const button =
+        document.querySelector(
+          ".notify-form .form-button"
+        );
+
+      button.disabled = true;
+      button.textContent = "SAVING...";
+
+      const { error } =
+        await supabaseClient
+          .from("notify_signups")
+          .insert([
+            {
+              name: name,
+              contact: contact,
+              gender: gender,
+              city: city
+            }
+          ]);
+
+      if (error) {
+
+        console.error(
+          "Notify signup error:",
+          error
+        );
+
+        message.textContent =
+          "Something went wrong. Please try again.";
+
+        button.disabled = false;
+        button.textContent =
+          "NOTIFY ME 🔥";
+
+        return;
+      }
+
+      message.textContent =
+        "You're on the list. ❤️ We'll contact you when 2Night goes live.";
+
+      document
+        .querySelector(".notify-form")
+        .reset();
+
+      button.disabled = false;
+      button.textContent =
+        "NOTIFY ME 🔥";
+    }
+
+    /* =========================================
+       INITIAL POLL DISPLAY
+       ========================================= */
+
+    showPollResults();
+
+
+    /* =========================================================
+       PREVIEW — CHAT SCROLL + SCREENSHOT ANIMATION
+       ========================================================= */
+
+    const chatScroll = document.getElementById("chatScroll");
+
+    if (chatScroll) {
+      let chatAutoScroll = true;
+      let chatDirection = 1;
+
+      const stopChatAutoScroll = () => {
+        chatAutoScroll = false;
+      };
+
+      chatScroll.addEventListener("wheel", stopChatAutoScroll, { passive: true });
+      chatScroll.addEventListener("touchstart", stopChatAutoScroll, { passive: true });
+      chatScroll.addEventListener("pointerdown", stopChatAutoScroll, { passive: true });
+
+      setInterval(() => {
+        if (!chatAutoScroll || !chatScroll.offsetParent) return;
+
+        const maxScroll = chatScroll.scrollHeight - chatScroll.clientHeight;
+        if (maxScroll <= 5) return;
+
+        const next = chatScroll.scrollTop + (0.45 * chatDirection);
+
+        if (next >= maxScroll) {
+          chatDirection = -1;
+        } else if (next <= 0) {
+          chatDirection = 1;
+        }
+
+        chatScroll.scrollTop += 0.45 * chatDirection;
+      }, 35);
+    }
+
+
+    const previewGallery = document.getElementById("previewGallery");
+    const previewShots = document.querySelectorAll(".preview-shot");
+    const previewDots = document.getElementById("previewDots");
+
+    if (previewGallery && previewShots.length && previewDots) {
+
+      previewShots.forEach((_, index) => {
+        const dot = document.createElement("span");
+        dot.className = "preview-dot" + (index === 0 ? " is-active" : "");
+        previewDots.appendChild(dot);
+      });
+
+      const dots = document.querySelectorAll(".preview-dot");
+
+      const updatePreviewActive = () => {
+        const galleryCenter =
+          previewGallery.getBoundingClientRect().left +
+          previewGallery.getBoundingClientRect().width / 2;
+
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+
+        previewShots.forEach((shot, index) => {
+          const rect = shot.getBoundingClientRect();
+          const center = rect.left + rect.width / 2;
+          const distance = Math.abs(center - galleryCenter);
+
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        });
+
+        previewShots.forEach((shot, index) => {
+          shot.classList.toggle("is-active", index === closestIndex);
+        });
+
+        dots.forEach((dot, index) => {
+          dot.classList.toggle("is-active", index === closestIndex);
+        });
+      };
+
+      previewGallery.addEventListener("scroll", updatePreviewActive, { passive: true });
+      window.addEventListener("resize", updatePreviewActive);
+      updatePreviewActive();
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          previewShots[index].scrollIntoView({
+            behavior: "smooth",
+            inline: "center",
+            block: "nearest"
+          });
+        });
+      });
+    }
+
+
+    /* =========================================
+       KEYBOARD / BACK BUTTON
+       ========================================= */
+
+    window.addEventListener(
+      "popstate",
+      function () {
+
+        goHome();
+
+      }
+    );
+
+    /* =========================================
+       HOW TO ACCESS MODAL
+       ========================================= */
+
+    function openAccessModal() {
+
+      const modal =
+        document.getElementById("accessModal");
+
+      if (!modal) return;
+
+      modal.classList.add("show");
+
+      document.body.style.overflow = "hidden";
+
+    }
+
+
+    function closeAccessModal(event) {
+
+      if (
+        event &&
+        event.target !== event.currentTarget
+      ) {
+        return;
+      }
+
+      const modal =
+        document.getElementById("accessModal");
+
+      if (!modal) return;
+
+      modal.classList.remove("show");
+
+      document.body.style.overflow = "";
+
+    }
+
+
+
+
+    /* =========================================================
+       PREVIEW — LONG CHAT AUTO-SCROLL
+       ========================================================= */
+
+    (function initChatPreview() {
+      const chatScroll = document.getElementById("chatScroll");
+      const chatPhone = document.getElementById("chatPhone");
+
+      if (!chatScroll || !chatPhone) return;
+
+      let paused = false;
+      let resumeTimer;
+      let lastTime = 0;
+
+      const pauseAutoScroll = () => {
+        paused = true;
+        clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(() => {
+          paused = false;
+        }, 1800);
+      };
+
+      ["wheel", "touchstart", "pointerdown"].forEach((eventName) => {
+        chatScroll.addEventListener(eventName, pauseAutoScroll, { passive: true });
+      });
+
+      function animate(time) {
+        if (!lastTime) lastTime = time;
+        const delta = Math.min(time - lastTime, 50);
+        lastTime = time;
+
+        if (!paused && chatScroll.scrollHeight > chatScroll.clientHeight + 2) {
+          chatScroll.scrollTop += delta * 0.018;
+
+          if (chatScroll.scrollTop >= chatScroll.scrollHeight - chatScroll.clientHeight - 2) {
+            paused = true;
+            clearTimeout(resumeTimer);
+            resumeTimer = setTimeout(() => {
+              chatScroll.scrollTo({ top: 0, behavior: "smooth" });
+              setTimeout(() => { paused = false; }, 900);
+            }, 1400);
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      requestAnimationFrame(animate);
+    })();
+
+    let joinedCount =
+      Number(
+        localStorage.getItem("2nightJoinedCount")
+      ) || 1247;
+
+    // Show saved count immediately
+    const joinedCountElement =
+      document.getElementById("joinedCount");
+
+    if (joinedCountElement) {
+      joinedCountElement.textContent =
+        joinedCount.toLocaleString() + "+";
+    }
+
+    function updateJoinedCount() {
+
+      joinedCount += 1;
+
+      localStorage.setItem(
+        "2nightJoinedCount",
+        joinedCount
+      );
+
+      const countElement =
+        document.getElementById("joinedCount");
+
+      if (countElement) {
+        countElement.textContent =
+          joinedCount.toLocaleString() + "+";
+      }
+    }
+
+    setInterval(
+      updateJoinedCount,
+      60 * 60 * 1000
+    );
+    // games
+    function playPeopleGame(button, resultId, answer) {
+      const card = button.closest(".game-card");
+
+      if (!card) return;
+
+      card.querySelectorAll(".game-options button").forEach(function (btn) {
+        btn.classList.remove("selected");
+      });
+
+      button.classList.add("selected");
+
+      const result = document.getElementById(resultId);
+
+      if (result) {
+        result.textContent = "✨ You picked: " + answer;
+        result.classList.add("show");
+      }
+
+      // Save locally
+      localStorage.setItem(
+        "2night_game_" + resultId,
+        JSON.stringify({
+          answer: answer,
+          savedAt: Date.now()
+        })
+      );
+    }
+
+    // games functions
+    function restorePeopleGames() {
+      document.querySelectorAll(".game-card").forEach(function (card) {
+
+        const buttons = card.querySelectorAll(
+          ".game-options button"
+        );
+
+        buttons.forEach(function (button) {
+
+          const onclick = button.getAttribute("onclick");
+
+          if (!onclick) return;
+
+          const match = onclick.match(
+            /playPeopleGame\(this,\s*['"]([^'"]+)['"]/
+          );
+
+          if (!match) return;
+
+          const resultId = match[1];
+
+          const saved =
+            localStorage.getItem("2night_game_" + resultId);
+
+          if (!saved) return;
+
+          try {
+            const data = JSON.parse(saved);
+
+            if (data.answer !== button.textContent.trim()) {
+              return;
+            }
+
+            button.classList.add("selected");
+
+            const result =
+              document.getElementById(resultId);
+
+            if (result) {
+              result.textContent =
+                "✨ You picked: " + data.answer;
+
+              result.classList.add("show");
+            }
+
+          } catch (error) {
+            console.log("Game restore error:", error);
+          }
+        });
+      });
+    }
+
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      restorePeopleGames
+    );
+
+
+    // bg change logic
+    /* =========================================================
+   BACKGROUND IMAGES — ADD THIS AT THE END OF YOUR <script>
+   ========================================================= */
+
+  
+
+
+    document.body.prepend(backgroundLayer);
+
+    function changePageBackground(page) {
+      const image = pageBackgrounds[page];
+
+      if (!image) return;
+
+      backgroundLayer.classList.add("changing");
+
+      setTimeout(() => {
+        backgroundLayer.style.backgroundImage =
+          `url("${image}")`;
+
+        backgroundLayer.classList.remove("changing");
+      }, 200);
+    }
+
+
+// bg
+/* =========================================
+   INITIAL BACKGROUND
+   ========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const background =
+    document.querySelector(".background");
+
+  if (background) {
+    background.style.backgroundImage =
+      'url("assets/bg/bg1.webp")';
+  }
+});
+
+  </script>
+
+  <!-- SHARE POPUP -->
+  <div id="sharePopup" class="share-popup-overlay">
+    <div class="share-popup">
+
+      <button class="share-popup-close" onclick="closeSharePopup()">×</button>
+
+      <h2>Share 2Night</h2>
+      <p class="share-subtitle">Spread the word & let someone discover 2Night.</p>
+
+      <div class="share-options">
+        <button onclick="shareWhatsApp()">💬 WhatsApp</button>
+        <button onclick="shareSMS()">💌 SMS</button>
+        <button onclick="copyShareLink()">🔗 Copy Link</button>
+        <button onclick="shareMore()">↗ More</button>
+      </div>
+
+      <div class="follow-divider"></div>
+
+      <h3>Follow 2Night</h3>
+
+      <div class="social-handles">
+        <a href="https://www.instagram.com/instagram/" target="_blank">
+          📸 <span>Instagram</span> @instagram
+        </a>
+
+        <a href="https://www.facebook.com/facebook/" target="_blank">
+          f <span>Facebook</span> @facebook
+        </a>
+
+        <a href="https://x.com/X" target="_blank">
+          𝕏 <span>X</span> @X
+        </a>
+      </div>
+
+    </div>
+  </div>
+</body>
+
+</html>
