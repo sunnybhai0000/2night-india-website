@@ -21,7 +21,7 @@
 
   <meta property="og:type" content="website">
 
-<link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
 
   <style>
     /* =========================================================
@@ -80,16 +80,16 @@
 
     /* BACKGROUND CHANGE ANIMATION */
 
-.background {
-  transition:
-    opacity 0.45s ease,
-    transform 0.65s ease;
-}
+    .background {
+      transition:
+        opacity 0.45s ease,
+        transform 0.65s ease;
+    }
 
-.background.bg-changing {
-  opacity: 0;
-  transform: scale(1.06);
-}
+    .background.bg-changing {
+      opacity: 0;
+      transform: scale(1.06);
+    }
 
     .dark-overlay {
       position: fixed;
@@ -411,6 +411,24 @@
       cursor: not-allowed;
 
       opacity: 0.72;
+    }
+
+    .download-note {
+      margin-top: 7px;
+
+      font-size: 7px;
+      line-height: 1.4;
+
+      text-align: center;
+
+      color: rgba(255, 255, 255, 0.48);
+
+      letter-spacing: 0.2px;
+    }
+
+    .download-note strong {
+      color: rgba(255, 255, 255, 0.72);
+      font-weight: 800;
     }
 
 
@@ -2041,6 +2059,19 @@
     /* =========================================================
    HOW TO ACCESS AFTER LAUNCH
    ========================================================= */
+    .prelaunch-note {
+      margin: 8px 0 0;
+      margin-top: 150px;
+      text-align: center;
+      font-size: 10px;
+      line-height: 15px;
+      color: #8f8f9d;
+    }
+
+    .prelaunch-note strong {
+      color: #ff4fae;
+      font-weight: 700;
+    }
 
     .access-button {
       width: min(360px, 100%);
@@ -2547,6 +2578,10 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+    }
+
+    .apk-url {
+      text-decoration: none;
     }
 
     /* Mobile */
@@ -3534,10 +3569,11 @@
             </div>
 
             <button class="download-btn" disabled>
-
-              <span class="download-title">DOWNLOAD</span>
-
-              <span class="download-countdown">
+              <a href="https://liuhxndxblvawtqejkmi.supabase.co/storage/v1/object/public/app-releases/test.apk"
+                class="apk-url" rel="noopener" style="text-decoration: none; color: rgb(196, 196, 196);">
+                <span class="download-title">DOWNLOAD</span>
+              </a>
+              <span class="download-countdown" style="color: white;">
                 <span id="days">00</span>d :
                 <span id="hours">00</span>h :
                 <span id="minutes">00</span>m :
@@ -3556,7 +3592,9 @@
             <span>HOW TO ACCESS</span>
             <span>AFTER LAUNCH →</span>
           </button>
-
+          <p class="prelaunch-note download-note">
+            Click the download button above to install the 2Night India Prelaunch APK.
+          </p>
           <!-- AVAILABLE DATE -->
 
           <div class="available-date">
@@ -4797,60 +4835,60 @@
    SCREEN NAVIGATION
    ========================================= */
 
-   function openScreen(screenId) {
+    function openScreen(screenId) {
 
-  const screens =
-    document.querySelectorAll(".screen");
+      const screens =
+        document.querySelectorAll(".screen");
 
-  screens.forEach((screen) => {
-    screen.classList.remove("active");
-  });
+      screens.forEach((screen) => {
+        screen.classList.remove("active");
+      });
 
-  const target =
-    document.getElementById(screenId);
+      const target =
+        document.getElementById(screenId);
 
-  if (target) {
-    target.classList.add("active");
-  }
+      if (target) {
+        target.classList.add("active");
+      }
 
-  /* ==============================
-     CHANGE BACKGROUND
-     ============================== */
+      /* ==============================
+         CHANGE BACKGROUND
+         ============================== */
 
-/* ==============================
-   CHANGE BACKGROUND WITH ANIMATION
-   ============================== */
+      /* ==============================
+         CHANGE BACKGROUND WITH ANIMATION
+         ============================== */
 
-const backgrounds = {
-  homeScreen: "assets/bg/bg1.webp",
-  previewScreen: "assets/bg/bg3.webp",
-  peopleScreen: "assets/bg/bg2.webp",
-  notifyScreen: "assets/bg/bg4.webp",
-  promoteScreen: "assets/bg/bg5.webp"
-};
+      const backgrounds = {
+        homeScreen: "assets/bg/bg1.webp",
+        previewScreen: "assets/bg/bg3.webp",
+        peopleScreen: "assets/bg/bg2.webp",
+        notifyScreen: "assets/bg/bg4.webp",
+        promoteScreen: "assets/bg/bg5.webp"
+      };
 
-const background = document.querySelector(".background");
+      const background = document.querySelector(".background");
 
-if (background && backgrounds[screenId]) {
+      if (background && backgrounds[screenId]) {
 
-  background.classList.remove("bg-changing");
+        background.classList.remove("bg-changing");
 
-  void background.offsetWidth;
+        void background.offsetWidth;
 
-  background.classList.add("bg-changing");
+        background.classList.add("bg-changing");
 
-  setTimeout(() => {
-    background.style.backgroundImage =
-      `url("${backgrounds[screenId]}")`;
-  }, 180);
+        setTimeout(() => {
+          background.style.backgroundImage =
+            `url("${backgrounds[screenId]}")`;
+        }, 180);
 
-  setTimeout(() => {
-    background.classList.remove("bg-changing");
-  }, 650);
-}
+        setTimeout(() => {
+          background.classList.remove("bg-changing");
+        }, 650);
+      }
 
-  updateNavigation(screenId);
-}
+      updateNavigation(screenId);
+    }
     /* =========================================
        NAVIGATION ACTIVE STATE
        ========================================= */
@@ -5585,7 +5623,7 @@ Not available on the App Store or Google Play Store. Download only from the offi
    BACKGROUND IMAGES — ADD THIS AT THE END OF YOUR <script>
    ========================================================= */
 
-  
+
 
 
     document.body.prepend(backgroundLayer);
@@ -5606,20 +5644,20 @@ Not available on the App Store or Google Play Store. Download only from the offi
     }
 
 
-// bg
-/* =========================================
-   INITIAL BACKGROUND
-   ========================================= */
+    // bg
+    /* =========================================
+       INITIAL BACKGROUND
+       ========================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
-  const background =
-    document.querySelector(".background");
+    document.addEventListener("DOMContentLoaded", () => {
+      const background =
+        document.querySelector(".background");
 
-  if (background) {
-    background.style.backgroundImage =
-      'url("assets/bg/bg1.webp")';
-  }
-});
+      if (background) {
+        background.style.backgroundImage =
+          'url("assets/bg/bg1.webp")';
+      }
+    });
 
   </script>
 
